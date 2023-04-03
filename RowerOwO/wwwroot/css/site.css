@@ -1,0 +1,39 @@
+html {
+    font-size: 14px;
+    margin: 0;
+    padding: 0;
+}
+
+@media (min-width: 768px) {
+  html {
+    font-size: 16px;
+  }
+}
+
+html {
+  position: relative;
+  min-height: 100%;
+}
+
+.home-section {
+    align-content: center;
+    border-radius: 20px;
+    --background-image: linear-gradient(to bottom right, #FFACAC, #FBFFB1);
+    background: #FFACAC;
+    color: white;
+    padding: 68px;
+    margin-top: 48px;
+    margin-bottom: 48px;
+}
+
+.bike-section img, td {
+    width: calc(100%/3);
+}
+
+.button-round {
+    background: white;
+    border: none;
+    border-radius: 20px;
+    padding: 10px;
+    color: #FFACAC;
+}

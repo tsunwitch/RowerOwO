@@ -1,0 +1,44 @@
+﻿@model IEnumerable<RowerOwO.Models.VehicleItemModel>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<style>
+    .button-round{
+        text-decoration: none;
+        background: #FFACAC;
+        color:white;
+        display:inline-block;
+        margin-top:30px;
+    }
+
+</style>
+
+<h1>Lista rowerów</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+
+<table class="table">
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                <img style="width:280px" src="@item.ImgPath" />
+            </td>
+            <td>
+                <h3>@Html.DisplayFor(modelItem => item.Name)</h3><br>
+                @Html.DisplayFor(modelItem => item.Detail.Description)<br><br>
+                Status: @Html.DisplayFor(modelItem => item.IsAvailable)<br>
+                @*@Html.ActionLink("Details", "Details", new { id=item.Id })*@
+                <a href="@Url.Action("Details", new { id=item.Id })" class="button-round">Details</a>
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Id)
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
