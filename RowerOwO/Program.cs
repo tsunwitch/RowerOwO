@@ -24,21 +24,21 @@ namespace RowerOwO
                var items = new List<VehicleModel>
                 {
                     new VehicleModel(){
-                        //Id=0,
+                        Id= Guid.NewGuid(),
                         Name="Fwaggot 12",
                         IsAvailable=true,
                         ImgPath="\\img\\bike1.png",
                         //Detail=detailsList[0]
                     },
                     new VehicleModel(){
-                        //Id=1,
+                        Id= Guid.NewGuid(),
                         Name="Szybcior Mega Ultra",
                         IsAvailable=false,
                         ImgPath="\\img\\bike2.png",
                         //Detail=detailsList[1]
                     },
                     new VehicleModel(){
-                        //Id=2,
+                        Id= Guid.NewGuid(),
                         Name="Scooter Board Ultra",
                         IsAvailable=false,
                         ImgPath="\\img\\bike3.png",
