@@ -26,6 +26,7 @@ namespace RowerOwO.Controllers
             {
                 vehicleList.Add(new VehicleListViewModel()
                 {
+                    Id = item.Id,
                     Name = item.Name,
                     IsAvailable = item.IsAvailable,
                     ImgPath = item.ImgPath,
@@ -59,6 +60,7 @@ namespace RowerOwO.Controllers
 
             VehicleDetailsViewModel detailViewModel = new VehicleDetailsViewModel()
             {
+                Id = selectedVehicle.Id,
                 Name = selectedVehicle.Name,
                 ImgPath = selectedVehicle.ImgPath,
                 Description = selectedVehicle.Description,
@@ -68,7 +70,7 @@ namespace RowerOwO.Controllers
                 Type = selectedVehicle.Type
             };
 
-            return View(selectedVehicle);
+            return View(detailViewModel);
         }
     }
 }

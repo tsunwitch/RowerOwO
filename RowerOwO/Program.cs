@@ -21,7 +21,9 @@ namespace RowerOwO
             {
                var context = serviceScope.ServiceProvider.GetService<DatabaseContext>();
 
-               var items = new List<VehicleModel>
+               if(context != null)
+                {
+                    var items = new List<VehicleModel>
                 {
                     new VehicleModel(){
                         //Id= Guid.NewGuid(),
@@ -57,6 +59,7 @@ namespace RowerOwO
 
                     context.Vehicles.AddRange(items);
                     context.SaveChanges();
+                }
             }
 
             // Configure the HTTP request pipeline.
