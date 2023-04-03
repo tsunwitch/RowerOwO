@@ -5,7 +5,7 @@ namespace RowerOwO.Models
 {
     public class VehicleModel
     {
-        public int Id { get; set; }
+        public Guid Id { get; set; }
         public string Name { get; set; }
         public bool IsAvailable { get; set; }
         public string ImgPath { get; set; }

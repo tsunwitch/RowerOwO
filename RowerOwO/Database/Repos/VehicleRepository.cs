@@ -19,9 +19,18 @@ namespace RowerOwO.Database.Repos
             return ctx.Vehicles.ToList();
         }
 
-        public VehicleModel Get(int id)
+        public VehicleModel Get(Guid id)
         {
-            return ctx.Vehicles.FirstOrDefault(r => r.Id ==  id);
+            var vehicleToReturn =  ctx.Vehicles.FirstOrDefault(r => r.Id ==  id);
+
+            if (vehicleToReturn != null)
+            {
+                return vehicleToReturn;
+            }
+            else
+            {
+                throw new Exception();
+            }
         }
     }
 }

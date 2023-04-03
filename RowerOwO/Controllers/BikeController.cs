@@ -38,24 +38,8 @@ namespace RowerOwO.Controllers
             return View(vehicleList);
         }
 
-        public ActionResult Details(int id)
+        public ActionResult Details(Guid id)
         {
-            //List <VehicleDetailsViewModel> vehicleDetailList = new List<VehicleDetailsViewModel>();
-
-            //foreach (var item in vehicleRepo.GetAll())
-            //{
-            //    vehicleDetailList.Add(new VehicleDetailsViewModel()
-            //    {
-            //        Name = item.Name,
-            //        ImgPath = item.ImgPath,
-            //        Description = item.Description,
-            //        Powered = item.Powered,
-            //        Color = item.Color,
-            //        RentPrice = item.RentPrice,
-            //        Type = item.Type
-            //    });
-            //}
-
             var selectedVehicle = vehicleRepo.Get(id);
 
             VehicleDetailsViewModel detailViewModel = new VehicleDetailsViewModel()
