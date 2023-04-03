@@ -1,4 +1,4 @@
-using RowerOwO.Database;
+﻿using RowerOwO.Database;
 using RowerOwO.Models;
 
 namespace RowerOwO
@@ -10,7 +10,7 @@ namespace RowerOwO
             var builder = WebApplication.CreateBuilder(args);
 
             //Database
-            builder.Services.AddDbContext<BikeContext>();
+            builder.Services.AddDbContext<DatabaseContext>();
 
             // Add services to the container.
             builder.Services.AddControllersWithViews();
@@ -19,35 +19,47 @@ namespace RowerOwO
 
             using (var serviceScope = app.Services.CreateScope())
             {
-               var context = serviceScope.ServiceProvider.GetService<BikeContext>();
+               var context = serviceScope.ServiceProvider.GetService<DatabaseContext>();
 
-               var items = new List<VehicleItemModel>
+               if(context != null)
                 {
-                    new VehicleItemModel(){
-                        //Id=0,
+                    var items = new List<VehicleModel>
+                {
+                    new VehicleModel(){
+                        //Id= Guid.NewGuid(),
                         Name="Fwaggot 12",
                         IsAvailable=true,
                         ImgPath="\\img\\bike1.png",
-                        //Detail=detailsList[0]
+                        Color="Silver",
+                        Description="Uniwersalny rower miejski bez niepotrzebnych gadżetów. Idealny dla każdego(oprócz dzieci bo troche duzy)",
+                        Powered=false,
+                        RentPrice=25,
                     },
-                    new VehicleItemModel(){
-                        //Id=1,
+                    new VehicleModel(){
+                        //Id= Guid.NewGuid(),
                         Name="Szybcior Mega Ultra",
                         IsAvailable=false,
                         ImgPath="\\img\\bike2.png",
-                        //Detail=detailsList[1]
+                        Color="Off-White",
+                        Description="Mały składany rower. Dzięki rozmiarowi możesz zabrać go łatwo ze sobą do środków transportu publicznego. Posiada napęd elektryczny",
+                        Powered=true,
+                        RentPrice=40.50
                     },
-                    new VehicleItemModel(){
-                        //Id=2,
+                    new VehicleModel(){
+                        //Id= Guid.NewGuid(),
                         Name="Scooter Board Ultra",
                         IsAvailable=false,
                         ImgPath="\\img\\bike3.png",
-                        //Detail=detailsList[2]
+                        Color="Pink",
+                        Description="Stylowy rower z wykrzywioną ramą kierowany do kobiet. Wyróżnij się na tle miasta!",
+                        Powered=false,
+                        RentPrice=27.30
                     }
                 };
 
                     context.Vehicles.AddRange(items);
                     context.SaveChanges();
+                }
             }
 
             // Configure the HTTP request pipeline.

@@ -10,12 +10,12 @@ namespace RowerOwO.Controllers
 {
     public class BikeController : Controller
     {
-        public VehicleItemRepository vehicleRepo;
-        public BikeController(BikeContext bike)
+        public VehicleRepository vehicleRepo;
+
+        public BikeController(DatabaseContext bike)
         {
             vehicleRepo = new(bike);
         }
-        public VehicleListViewModel vehicleVM;
 
         // GET: BikeController
         public ActionResult Index()
@@ -26,21 +26,35 @@ namespace RowerOwO.Controllers
             {
                 vehicleList.Add(new VehicleListViewModel()
                 {
+                    Id = item.Id,
                     Name = item.Name,
                     IsAvailable = item.IsAvailable,
                     ImgPath = item.ImgPath,
-                    DetailId = item.DetailId
+                    Description = item.Description,
+                    Type = item.Type
                 });
             }
 
             return View(vehicleList);
         }
 
-        public ActionResult Details(int id)
+        public ActionResult Details(Guid id)
         {
-            var vehicle = itemRepo.GetVehicles().FirstOrDefault(r => r.Id == id);
+            var selectedVehicle = vehicleRepo.Get(id);
 
-            return View(vehicle);
+            VehicleDetailsViewModel detailViewModel = new VehicleDetailsViewModel()
+            {
+                Id = selectedVehicle.Id,
+                Name = selectedVehicle.Name,
+                ImgPath = selectedVehicle.ImgPath,
+                Description = selectedVehicle.Description,
+                Powered = selectedVehicle.Powered,
+                Color = selectedVehicle.Color,
+                RentPrice = selectedVehicle.RentPrice,
+                Type = selectedVehicle.Type
+            };
+
+            return View(detailViewModel);
         }
     }
 }
