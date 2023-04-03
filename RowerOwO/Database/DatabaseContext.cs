@@ -3,11 +3,10 @@ using RowerOwO.Models;
 
 namespace RowerOwO.Database
 {
-    public class BikeContext : DbContext
+    public class DatabaseContext : DbContext
     {
-        public DbSet<VehicleItemModel> Vehicles { get; set; }
-        public DbSet<VehicleDetailModel> VehicleDetails { get; set; }
-        public DbSet<RentModel> Rentals { get; set; }
+        public DbSet<VehicleModel> Vehicles { get; set; }
+        public DbSet<RentalModel> Rentals { get; set; }
         public DbSet<RentalPointModel> RentalPoints { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)

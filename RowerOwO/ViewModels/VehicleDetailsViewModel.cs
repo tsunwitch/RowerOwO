@@ -5,13 +5,12 @@ namespace RowerOwO.ViewModels
 {
     public class VehicleDetailsViewModel
     {
-        public static VehicleItemRepository itemRepo = new();
-        public static VehicleDetailRepository detailRepo = new();
-        
-
-        public List<VehicleDetailsViewModel> GetVehicles()
-        {
-            return ;
-        }
+        public Guid Id { get; set; }
+        public string Name { get; set; }
+        public string ImgPath { get; set; }
+        public string Description { get; set; }
+        public bool Powered { get; set; }
+        public string Color { get; set; }
+        public double RentPrice { get; set; }
     }
 }

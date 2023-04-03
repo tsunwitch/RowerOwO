@@ -10,7 +10,7 @@ namespace RowerOwO
             var builder = WebApplication.CreateBuilder(args);
 
             //Database
-            builder.Services.AddDbContext<BikeContext>();
+            builder.Services.AddDbContext<DatabaseContext>();
 
             // Add services to the container.
             builder.Services.AddControllersWithViews();
@@ -19,25 +19,25 @@ namespace RowerOwO
 
             using (var serviceScope = app.Services.CreateScope())
             {
-               var context = serviceScope.ServiceProvider.GetService<BikeContext>();
+               var context = serviceScope.ServiceProvider.GetService<DatabaseContext>();
 
-               var items = new List<VehicleItemModel>
+               var items = new List<VehicleModel>
                 {
-                    new VehicleItemModel(){
+                    new VehicleModel(){
                         //Id=0,
                         Name="Fwaggot 12",
                         IsAvailable=true,
                         ImgPath="\\img\\bike1.png",
                         //Detail=detailsList[0]
                     },
-                    new VehicleItemModel(){
+                    new VehicleModel(){
                         //Id=1,
                         Name="Szybcior Mega Ultra",
                         IsAvailable=false,
                         ImgPath="\\img\\bike2.png",
                         //Detail=detailsList[1]
                     },
-                    new VehicleItemModel(){
+                    new VehicleModel(){
                         //Id=2,
                         Name="Scooter Board Ultra",
                         IsAvailable=false,

@@ -5,16 +5,16 @@ using System.Security.Cryptography.X509Certificates;
 
 namespace RowerOwO.Database.Repos
 {
-    public class VehicleItemRepository
+    public class VehicleRepository
     {
-        private readonly BikeContext ctx;
+        private readonly DatabaseContext ctx;
 
-        public VehicleItemRepository(BikeContext ctx) 
+        public VehicleRepository(DatabaseContext ctx) 
         {
             this.ctx = ctx;
         }
 
-        public List<VehicleItemModel> GetAll()
+        public List<VehicleModel> GetAll()
         {
             return ctx.Vehicles.ToList();
         }
