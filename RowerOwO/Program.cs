@@ -24,7 +24,7 @@ namespace RowerOwO
                var items = new List<VehicleModel>
                 {
                     new VehicleModel(){
-                        Id= Guid.NewGuid(),
+                        //Id= Guid.NewGuid(),
                         Name="Fwaggot 12",
                         IsAvailable=true,
                         ImgPath="\\img\\bike1.png",
@@ -34,7 +34,7 @@ namespace RowerOwO
                         RentPrice=25,
                     },
                     new VehicleModel(){
-                        Id= Guid.NewGuid(),
+                        //Id= Guid.NewGuid(),
                         Name="Szybcior Mega Ultra",
                         IsAvailable=false,
                         ImgPath="\\img\\bike2.png",
@@ -44,7 +44,7 @@ namespace RowerOwO
                         RentPrice=40.50
                     },
                     new VehicleModel(){
-                        Id= Guid.NewGuid(),
+                        //Id= Guid.NewGuid(),
                         Name="Scooter Board Ultra",
                         IsAvailable=false,
                         ImgPath="\\img\\bike3.png",

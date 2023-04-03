@@ -39,23 +39,36 @@ namespace RowerOwO.Controllers
 
         public ActionResult Details(int id)
         {
-            List <VehicleDetailsViewModel> vehicleDetailList = new List<VehicleDetailsViewModel>();
+            //List <VehicleDetailsViewModel> vehicleDetailList = new List<VehicleDetailsViewModel>();
 
-            foreach (var item in vehicleRepo.GetAll())
+            //foreach (var item in vehicleRepo.GetAll())
+            //{
+            //    vehicleDetailList.Add(new VehicleDetailsViewModel()
+            //    {
+            //        Name = item.Name,
+            //        ImgPath = item.ImgPath,
+            //        Description = item.Description,
+            //        Powered = item.Powered,
+            //        Color = item.Color,
+            //        RentPrice = item.RentPrice,
+            //        Type = item.Type
+            //    });
+            //}
+
+            var selectedVehicle = vehicleRepo.Get(id);
+
+            VehicleDetailsViewModel detailViewModel = new VehicleDetailsViewModel()
             {
-                vehicleDetailList.Add(new VehicleDetailsViewModel()
-                {
-                    Name = item.Name,
-                    ImgPath = item.ImgPath,
-                    Description = item.Description,
-                    Powered = item.Powered,
-                    Color = item.Color,
-                    RentPrice = item.RentPrice,
-                    Type = item.Type
-                });
-            }
+                Name = selectedVehicle.Name,
+                ImgPath = selectedVehicle.ImgPath,
+                Description = selectedVehicle.Description,
+                Powered = selectedVehicle.Powered,
+                Color = selectedVehicle.Color,
+                RentPrice = selectedVehicle.RentPrice,
+                Type = selectedVehicle.Type
+            };
 
-            return View(vehicleDetailList);
+            return View(selectedVehicle);
         }
     }
 }
