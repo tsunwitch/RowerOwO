@@ -9,9 +9,10 @@ namespace RowerOwO.Models
         public string Name { get; set; }
         public bool IsAvailable { get; set; }
         public string ImgPath { get; set; }
-        public string Description { get; set; } = "some description";
-        public bool Powered { get; set; } = false;
-        public string Color { get; set; } = "some color";
-        public double RentPrice { get; set; } = 0;
+        public string Description { get; set; }
+        public bool Powered { get; set; }
+        public string Color { get; set; }
+        public double RentPrice { get; set; }
+        public string Type { get; set; } = "Rower";
     }
 }

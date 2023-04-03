@@ -12,5 +12,6 @@ namespace RowerOwO.ViewModels
         public bool Powered { get; set; }
         public string Color { get; set; }
         public double RentPrice { get; set; }
+        public string Type { get; set; }
     }
 }

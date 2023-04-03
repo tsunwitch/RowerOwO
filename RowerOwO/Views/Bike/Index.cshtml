@@ -29,11 +29,12 @@
                 <img style="width:280px" src="@item.ImgPath" />
             </td>
             <td>
-                <h3>@Html.DisplayFor(modelItem => item.Name)</h3><br>
+                <h3>@Html.DisplayFor(modelItem => item.Name)</h3>
+                <p style="color:#FFACAC; font-size:1.4rem;opacity:0.6">@item.Type</p><br>
                 @Html.DisplayFor(modelItem => item.Description)<br><br>
                 Status: @Html.DisplayFor(modelItem => item.IsAvailable)<br>
                 @*@Html.ActionLink("Details", "Details", new { id=item.Id })*@
-                <a href="@Url.Action("Details", new { id=item.Id })" class="button-round">Details</a>
+                <a href="@Url.Action("Details", new { id=item.Id })" class="button-round">Szczegóły</a>
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.Id)

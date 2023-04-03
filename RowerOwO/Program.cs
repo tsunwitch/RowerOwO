@@ -31,7 +31,7 @@ namespace RowerOwO
                         Color="Silver",
                         Description="Uniwersalny rower miejski bez niepotrzebnych gadżetów. Idealny dla każdego(oprócz dzieci bo troche duzy)",
                         Powered=false,
-                        RentPrice=25
+                        RentPrice=25,
                     },
                     new VehicleModel(){
                         Id= Guid.NewGuid(),

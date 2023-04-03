@@ -16,7 +16,6 @@ namespace RowerOwO.Controllers
         {
             vehicleRepo = new(bike);
         }
-        public VehicleListViewModel vehicleVM;
 
         // GET: BikeController
         public ActionResult Index()
@@ -29,7 +28,9 @@ namespace RowerOwO.Controllers
                 {
                     Name = item.Name,
                     IsAvailable = item.IsAvailable,
-                    ImgPath = item.ImgPath
+                    ImgPath = item.ImgPath,
+                    Description = item.Description,
+                    Type = item.Type
                 });
             }
 
@@ -49,7 +50,8 @@ namespace RowerOwO.Controllers
                     Description = item.Description,
                     Powered = item.Powered,
                     Color = item.Color,
-                    RentPrice = item.RentPrice
+                    RentPrice = item.RentPrice,
+                    Type = item.Type
                 });
             }
 
