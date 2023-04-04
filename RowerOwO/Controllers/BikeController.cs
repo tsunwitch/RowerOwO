@@ -65,6 +65,10 @@ namespace RowerOwO.Controllers
         [HttpPost]
         public ActionResult CreateSubmit(string Name, string ImgPath, string Description, bool Powered, string Color, double RentPrice, string Type)
         {
+            if (ImgPath == null)
+            {
+                ImgPath = "https://v4.api.mganczarczyk.pl/v4/ras/wholesomeyuri/redirect?safety";
+            }
             vehicleRepo.Create(Name, ImgPath, Description, Powered, Color, RentPrice, Type);
             return RedirectToAction("Index");
         }
