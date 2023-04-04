@@ -1,18 +1,14 @@
-﻿using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
-
-namespace RowerOwO.Models
+﻿namespace RowerOwO.ViewModels
 {
-    public class VehicleModel
+    public class VehicleEditViewModel
     {
         public Guid Id { get; set; }
         public string? Name { get; set; }
-        public bool? IsAvailable { get; set; }
         public string? ImgPath { get; set; }
         public string? Description { get; set; }
         public bool? Powered { get; set; }
         public string? Color { get; set; }
         public double? RentPrice { get; set; }
-        public string Type { get; set; } = "Rower";
+        public string? Type { get; set; }
     }
 }

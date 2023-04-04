@@ -1,5 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using RowerOwO.Models;
+using RowerOwO.ViewModels;
 
 namespace RowerOwO.Database
 {
@@ -13,5 +14,7 @@ namespace RowerOwO.Database
         {
             optionsBuilder.UseInMemoryDatabase(databaseName: "BikeDB");
         }
+
+        public DbSet<RowerOwO.ViewModels.VehicleEditViewModel>? VehicleEditViewModel { get; set; }
     }
 }

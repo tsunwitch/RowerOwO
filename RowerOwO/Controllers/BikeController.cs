@@ -56,5 +56,55 @@ namespace RowerOwO.Controllers
 
             return View(detailViewModel);
         }
+
+        public ActionResult Create()
+        {
+            return View();
+        }
+
+        public ActionResult Edit(Guid id)
+        {
+            var selectedVehicle = vehicleRepo.Get(id);
+
+            VehicleEditViewModel editViewModel = new VehicleEditViewModel()
+            {
+                Id = selectedVehicle.Id,
+                Name = selectedVehicle.Name,
+                ImgPath = selectedVehicle.ImgPath,
+                Description = selectedVehicle.Description,
+                Powered = selectedVehicle.Powered,
+                Color = selectedVehicle.Color,
+                RentPrice = selectedVehicle.RentPrice,
+                Type = selectedVehicle.Type
+            };
+
+            return View(editViewModel);
+        }
+
+        [HttpPost]
+        public ActionResult CreateSubmit(string Name, string ImgPath, string Description, bool Powered, string Color, double RentPrice, string Type)
+        {
+            if (ImgPath == null)
+            {
+                ImgPath = "\\img\\bikeDefault.png";
+            }
+            vehicleRepo.Create(Name, ImgPath, Description, Powered, Color, RentPrice, Type);
+            return RedirectToAction("Index");
+        }
+
+        public ActionResult EditSubmit(Guid id,string Name, string Description, bool Powered, string Color, double RentPrice, string Type)
+        {
+            //ImgPath doesen't change for now
+            vehicleRepo.Edit(id, Name, Description, Powered, Color, RentPrice, Type);
+
+            return RedirectToAction("Index");
+        }
+
+        public ActionResult Delete(Guid id)
+        {
+            vehicleRepo.Delete(id);
+
+            return RedirectToAction("Index");
+        }
     }
 }
