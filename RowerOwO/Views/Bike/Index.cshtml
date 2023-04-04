@@ -35,7 +35,8 @@
                 Status: @Html.DisplayFor(modelItem => item.IsAvailable)<br>
                 @*@Html.ActionLink("Details", "Details", new { id=item.Id })*@
                 @*@<a href="@Url.Action("Details", new { id=item.Id })" class="button-round">Szczegóły</a>*@
-                    <a asp-action="Details" asp-route-id="@item.Id" class="button-round">Szczegóły</a>
+                <a asp-action="Details" asp-route-id="@item.Id" class="button-round"><i class="bi bi-zoom-in"></i></a>
+                <a asp-action="Edit" asp-route-id="@item.Id" class="button-round"><i class="bi bi-pencil"></i></a>
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.Id)

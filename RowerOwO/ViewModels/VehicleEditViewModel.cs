@@ -1,6 +1,6 @@
 ﻿namespace RowerOwO.ViewModels
 {
-    public class VehicleCreateViewModel
+    public class VehicleEditViewModel
     {
         public Guid Id { get; set; }
         public string? Name { get; set; }
