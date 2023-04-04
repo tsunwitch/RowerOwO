@@ -63,9 +63,10 @@ namespace RowerOwO.Controllers
         }
 
         [HttpPost]
-        public void Submit(string Name, string ImgPath, string Description, bool Powered, string Color, double RentPrice, string Type)
+        public ActionResult CreateSubmit(string Name, string ImgPath, string Description, bool Powered, string Color, double RentPrice, string Type)
         {
             vehicleRepo.Create(Name, ImgPath, Description, Powered, Color, RentPrice, Type);
+            return RedirectToAction("Index");
         }
     }
 }

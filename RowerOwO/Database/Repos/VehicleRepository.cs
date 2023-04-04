@@ -37,6 +37,7 @@ namespace RowerOwO.Database.Repos
         {
             ctx.Vehicles.Add(new VehicleModel
             {
+                Id = Guid.NewGuid(),
                 Name = name,
                 IsAvailable = true,
                 ImgPath = imgPath,
