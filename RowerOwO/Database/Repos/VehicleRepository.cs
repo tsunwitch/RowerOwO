@@ -32,5 +32,20 @@ namespace RowerOwO.Database.Repos
                 throw new Exception();
             }
         }
+
+        public void Create(string name, bool isAvailable, string imgPath, string description, bool powered, string color, double rentPrice, string type)
+        {
+            ctx.Vehicles.Add(new VehicleModel
+            {
+                Name = name,
+                IsAvailable = isAvailable,
+                ImgPath = imgPath,
+                Description = description,
+                Powered = powered,
+                Color = color,
+                RentPrice = rentPrice,
+                Type = type
+            });
+        }
     }
 }
