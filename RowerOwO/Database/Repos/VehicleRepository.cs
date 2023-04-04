@@ -67,5 +67,12 @@ namespace RowerOwO.Database.Repos
 
             ctx.SaveChanges();
         }
+
+        public void Delete(Guid id)
+        {
+            var vehicleToDelete = ctx.Vehicles.FirstOrDefault(r => r.Id == id);
+            ctx.Vehicles.Remove(vehicleToDelete);
+            ctx.SaveChanges();
+        }
     }
 }

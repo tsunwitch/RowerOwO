@@ -99,5 +99,12 @@ namespace RowerOwO.Controllers
 
             return RedirectToAction("Index");
         }
+
+        public ActionResult Delete(Guid id)
+        {
+            vehicleRepo.Delete(id);
+
+            return RedirectToAction("Index");
+        }
     }
 }
