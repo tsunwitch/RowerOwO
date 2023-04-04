@@ -67,7 +67,7 @@ namespace RowerOwO.Controllers
         {
             if (ImgPath == null)
             {
-                ImgPath = "https://v4.api.mganczarczyk.pl/v4/ras/wholesomeyuri/redirect?safety";
+                ImgPath = "\\img\\bikeDefault.png";
             }
             vehicleRepo.Create(Name, ImgPath, Description, Powered, Color, RentPrice, Type);
             return RedirectToAction("Index");
