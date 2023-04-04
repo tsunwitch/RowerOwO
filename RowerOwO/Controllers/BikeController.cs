@@ -56,5 +56,10 @@ namespace RowerOwO.Controllers
 
             return View(detailViewModel);
         }
+
+        public ActionResult Create()
+        {
+            return View();
+        }
     }
 }
