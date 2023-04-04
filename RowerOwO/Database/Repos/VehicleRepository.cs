@@ -33,12 +33,12 @@ namespace RowerOwO.Database.Repos
             }
         }
 
-        public void Create(string name, bool isAvailable, string imgPath, string description, bool powered, string color, double rentPrice, string type)
+        public void Create(string name, string imgPath, string description, bool powered, string color, double rentPrice, string type)
         {
             ctx.Vehicles.Add(new VehicleModel
             {
                 Name = name,
-                IsAvailable = isAvailable,
+                IsAvailable = true,
                 ImgPath = imgPath,
                 Description = description,
                 Powered = powered,
@@ -46,6 +46,8 @@ namespace RowerOwO.Database.Repos
                 RentPrice = rentPrice,
                 Type = type
             });
+
+            ctx.SaveChanges();
         }
     }
 }
