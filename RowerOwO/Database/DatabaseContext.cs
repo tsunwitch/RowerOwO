@@ -16,5 +16,7 @@ namespace RowerOwO.Database
         }
 
         public DbSet<RowerOwO.ViewModels.VehicleEditViewModel>? VehicleEditViewModel { get; set; }
+
+        public DbSet<RowerOwO.ViewModels.RentalPointListViewModel>? RentalPointListViewModel { get; set; }
     }
 }

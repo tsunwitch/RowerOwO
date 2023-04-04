@@ -1,6 +1,6 @@
-﻿namespace RowerOwO.Models
+﻿namespace RowerOwO.ViewModels
 {
-    public class RentalPointModel
+    public class RentalPointListViewModel
     {
         public Guid Id { get; set; }
         public string? Name { get; set; }

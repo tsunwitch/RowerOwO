@@ -23,41 +23,70 @@ namespace RowerOwO
 
                if(context != null)
                 {
-                    var items = new List<VehicleModel>
-                {
-                    new VehicleModel(){
-                        //Id= Guid.NewGuid(),
-                        Name="Fwaggot 12",
-                        IsAvailable=true,
-                        ImgPath="\\img\\bike1.png",
-                        Color="Silver",
-                        Description="Uniwersalny rower miejski bez niepotrzebnych gadżetów. Idealny dla każdego(oprócz dzieci bo troche duzy)",
-                        Powered=false,
-                        RentPrice=25,
-                    },
-                    new VehicleModel(){
-                        //Id= Guid.NewGuid(),
-                        Name="Szybcior Mega Ultra",
-                        IsAvailable=false,
-                        ImgPath="\\img\\bike2.png",
-                        Color="Off-White",
-                        Description="Mały składany rower. Dzięki rozmiarowi możesz zabrać go łatwo ze sobą do środków transportu publicznego. Posiada napęd elektryczny",
-                        Powered=true,
-                        RentPrice=40.50
-                    },
-                    new VehicleModel(){
-                        //Id= Guid.NewGuid(),
-                        Name="Scooter Board Ultra",
-                        IsAvailable=false,
-                        ImgPath="\\img\\bike3.png",
-                        Color="Pink",
-                        Description="Stylowy rower z wykrzywioną ramą kierowany do kobiet. Wyróżnij się na tle miasta!",
-                        Powered=false,
-                        RentPrice=27.30
-                    }
-                };
+                    var vehicles = new List<VehicleModel>
+                    {
+                        new VehicleModel(){
+                            //Id= Guid.NewGuid(),
+                            Name="Fwaggot 12",
+                            IsAvailable=true,
+                            ImgPath="\\img\\bike1.png",
+                            Color="Silver",
+                            Description="Uniwersalny rower miejski bez niepotrzebnych gadżetów. Idealny dla każdego(oprócz dzieci bo troche duzy)",
+                            Powered=false,
+                            RentPrice=25,
+                        },
+                        new VehicleModel(){
+                            //Id= Guid.NewGuid(),
+                            Name="Szybcior Mega Ultra",
+                            IsAvailable=false,
+                            ImgPath="\\img\\bike2.png",
+                            Color="Off-White",
+                            Description="Mały składany rower. Dzięki rozmiarowi możesz zabrać go łatwo ze sobą do środków transportu publicznego. Posiada napęd elektryczny",
+                            Powered=true,
+                            RentPrice=40.50
+                        },
+                        new VehicleModel(){
+                            //Id= Guid.NewGuid(),
+                            Name="Scooter Board Ultra",
+                            IsAvailable=false,
+                            ImgPath="\\img\\bike3.png",
+                            Color="Pink",
+                            Description="Stylowy rower z wykrzywioną ramą kierowany do kobiet. Wyróżnij się na tle miasta!",
+                            Powered=false,
+                            RentPrice=27.30
+                        }
+                    };
 
-                    context.Vehicles.AddRange(items);
+                    var rentalPoints = new List<RentalPointModel>()
+                    {
+                        new RentalPointModel(){
+                            Name="RowerOwO Bielsko-Biała",
+                            City="Bielsko-Biała",
+                            Street="Szczotkowa",
+                            Number="5"
+                        },
+                        new RentalPointModel(){
+                            Name="RowerOwO Polibuda",
+                            City="Gliwice",
+                            Street="Akademicka",
+                            Number="2A"
+                        },
+                        new RentalPointModel(){
+                            Name="RowerOwO AGH",
+                            City="Kraków",
+                            Street="Poległych studentów",
+                            Number="rip"
+                        },
+                        new RentalPointModel(){
+                            Name="RowerOwO z widokiem na morze",
+                            City="Łeba",
+                            Street="Śledzia wędzonego",
+                            Number="58"
+                        }
+                    };
+
+                    context.Vehicles.AddRange(vehicles);
+                    context.RentalPoints.AddRange(rentalPoints);
                     context.SaveChanges();
                 }
             }
