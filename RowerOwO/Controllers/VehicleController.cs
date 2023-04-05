@@ -8,11 +8,11 @@ using System.Security.Cryptography.X509Certificates;
 
 namespace RowerOwO.Controllers
 {
-    public class BikeController : Controller
+    public class VehicleController : Controller
     {
         public VehicleRepository vehicleRepo;
 
-        public BikeController(DatabaseContext context)
+        public VehicleController(DatabaseContext context)
         {
             vehicleRepo = new(context);
         }
