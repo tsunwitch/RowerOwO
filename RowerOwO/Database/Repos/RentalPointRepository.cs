@@ -16,5 +16,18 @@ namespace RowerOwO.Database.Repos
         {
             return ctx.RentalPoints.ToList();
         }
+
+        public void Create(string name, string city, string street, string number)
+        {
+            ctx.RentalPoints.Add(new RentalPointModel
+            {
+                Name = name,
+                City = city,
+                Street = street,
+                Number = number
+            });
+
+            ctx.SaveChanges();
+        }
     }
 }

@@ -32,5 +32,17 @@ namespace RowerOwO.Controllers
 
             return View(rentalPointList);
         }
+
+        public ActionResult Create()
+        {
+            return View();
+        }
+
+        public ActionResult CreateSubmit(string name, string city, string street, string number)
+        {
+            rentalPointRepo.Create(name, city, street, number);
+
+            return RedirectToAction("Index");
+        }
     }
 }

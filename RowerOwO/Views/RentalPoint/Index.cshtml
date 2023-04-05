@@ -20,23 +20,18 @@
 <p>
     <a asp-action="Create">Create New</a>
 </p>
-<table class="table">
-    <thead>
-        <p>smiemszny obrazek</p>
-    <tbody>
-        @foreach (var item in Model)
-        {
-            <div style="display:flex;flex-wrap:wrap;width:100%">
-                <div class="rental-box">
-                    <h3>@item.Name</h3>
-                    <p style="color:#FFACAC; font-size:1.4rem;">@item.City</p><br>
-                    @item.Street @item.Number<br><br>
 
-                    <a asp-action="Edit" asp-route-id="@item.Id">Edit</a>
-                    <a asp-action="Details" asp-route-id="@item.Id">Details</a>
-                    <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
-                </div>
-            </div>
-        } 
-    </tbody>
-</table>
+@foreach (var item in Model)
+{
+    <div style="display:flex;flex-wrap:wrap;width:100%">
+        <div class="rental-box">
+            <h3>@item.Name</h3>
+            <p style="color:#FFACAC; font-size:1.4rem;">@item.City</p><br>
+            @item.Street @item.Number<br><br>
+
+            <a asp-action="Edit" asp-route-id="@item.Id">Edit</a>
+            <a asp-action="Details" asp-route-id="@item.Id">Details</a>
+            <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+        </div>
+    </div>
+}

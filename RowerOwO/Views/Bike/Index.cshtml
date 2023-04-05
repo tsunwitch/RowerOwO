@@ -4,17 +4,6 @@
     ViewData["Title"] = "Index";
 }
 
-<style>
-    .button-round{
-        text-decoration: none;
-        background: #FFACAC;
-        color:white;
-        display:inline-block;
-        margin-top:30px;
-    }
-
-</style>
-
 <h1>Lista rowerów</h1>
 
 <p>
@@ -35,9 +24,9 @@
                 Status: @Html.DisplayFor(modelItem => item.IsAvailable)<br>
                 @*@Html.ActionLink("Details", "Details", new { id=item.Id })*@
                 @*@<a href="@Url.Action("Details", new { id=item.Id })" class="button-round">Szczegóły</a>*@
-                <a asp-action="Details" asp-route-id="@item.Id" class="button-round"><i class="bi bi-zoom-in"></i></a>
-                <a asp-action="Edit" asp-route-id="@item.Id" class="button-round"><i class="bi bi-pencil"></i></a>
-                <a asp-action="Delete" asp-route-id="@item.Id" class="button-round"><i class="bi bi-trash"></i></a>
+                <a asp-action="Details" asp-route-id="@item.Id" class="button-round-inverted"><i class="bi bi-zoom-in"></i></a>
+                <a asp-action="Edit" asp-route-id="@item.Id" class="button-round-inverted"><i class="bi bi-pencil"></i></a>
+                <a asp-action="Delete" asp-route-id="@item.Id" class="button-round-inverted"><i class="bi bi-trash"></i></a>
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.Id)

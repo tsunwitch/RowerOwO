@@ -4,17 +4,6 @@
     ViewData["Title"] = "Edit";
 }
 
-<style>
-    .button-round {
-        text-decoration: none;
-        background: #FFACAC;
-        color: white;
-        display: inline-block;
-        margin-top: 30px;
-    }
-
-</style>
-
 <h1>Edit</h1>
 
 <h4>VehicleEditViewModel</h4>
@@ -66,7 +55,7 @@
                 <span asp-validation-for="Type" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <input type="submit" asp-action="EditSubmit" value="Edit" class="button-round"/>
+                <input type="submit" asp-action="EditSubmit" value="Edit" class="button-round-inverted"/>
             </div>
         </form>
     </div>

@@ -41,7 +41,21 @@ html {
     animation-timing-function: cubic-bezier();
 }
 
-.button-round:hover {
+.button-round-inverted {
+    background: #FFACAC;
+    border: none;
+    border-radius: 20px;
+    padding: 10px;
+    color:white;
+    animation-name: buttonSlideOut;
+    animation-duration: 0.4s;
+    animation-timing-function: cubic-bezier();
+    display:inline-block;
+    margin-top:30px;
+    text-decoration:none;
+}
+
+.button-round:hover, .button-round-inverted:hover {
     animation-name:buttonSlideIn;
     animation-duration:0.4s;
     animation-timing-function:cubic-bezier();
