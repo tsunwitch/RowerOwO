@@ -1,0 +1,36 @@
+﻿@model IEnumerable<RowerOwO.ViewModels.RentalPointListViewModel>
+
+@{
+    ViewData["Title"] = "View";
+}
+
+<style>
+    .rental-box{
+        margin:10px 0px 10px 0px;
+        padding:15px;
+        border-radius:10px;
+        background: #fafafa;
+        box-shadow: 10px 10px 0px #f2f1f0;
+        width:calc(100%/3);
+    }
+</style>
+
+<h1>Punkty wypożyczeń RowerOwO</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+
+@foreach (var item in Model)
+{
+    <div style="display:flex;flex-wrap:wrap;width:100%">
+        <div class="rental-box">
+            <h3>@item.Name</h3>
+            <p style="color:#FFACAC; font-size:1.4rem;">@item.City</p><br>
+            ul. @item.Street @item.Number<br><br>
+
+            <a asp-action="Edit" asp-route-id="@item.Id" class="button-round-inverted"><i class="bi bi-pencil"></i></a>
+            <a asp-action="Delete" asp-route-id="@item.Id" class="button-round-inverted"><i class="bi bi-trash"></i></a>
+        </div>
+    </div>
+}

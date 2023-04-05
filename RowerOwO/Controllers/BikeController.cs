@@ -12,9 +12,9 @@ namespace RowerOwO.Controllers
     {
         public VehicleRepository vehicleRepo;
 
-        public BikeController(DatabaseContext bike)
+        public BikeController(DatabaseContext context)
         {
-            vehicleRepo = new(bike);
+            vehicleRepo = new(context);
         }
 
         // GET: BikeController
