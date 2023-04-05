@@ -17,6 +17,11 @@ namespace RowerOwO.Database.Repos
             return ctx.RentalPoints.ToList();
         }
 
+        public RentalPointModel Get(Guid id)
+        {
+            return ctx.RentalPoints.FirstOrDefault(r => r.Id == id);
+        }
+
         public void Create(string name, string city, string street, string number)
         {
             ctx.RentalPoints.Add(new RentalPointModel
@@ -26,6 +31,18 @@ namespace RowerOwO.Database.Repos
                 Street = street,
                 Number = number
             });
+
+            ctx.SaveChanges();
+        }
+
+        public void Edit(Guid id, string name, string city, string street, string number)
+        {
+            var rentalPointToEdit = ctx.RentalPoints.FirstOrDefault(r => r.Id == id);
+
+            rentalPointToEdit.Name = name;
+            rentalPointToEdit.City = city;
+            rentalPointToEdit.Street = street;
+            rentalPointToEdit.Number = number;
 
             ctx.SaveChanges();
         }

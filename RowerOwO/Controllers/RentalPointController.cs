@@ -38,9 +38,32 @@ namespace RowerOwO.Controllers
             return View();
         }
 
+        public ActionResult Edit(Guid id)
+        {
+            var selectedRentalPoint = rentalPointRepo.Get(id);
+
+            var editViewModel = new RentalPointEditViewModel()
+            {
+                Id = selectedRentalPoint.Id,
+                Name = selectedRentalPoint.Name,
+                City = selectedRentalPoint.City,
+                Street = selectedRentalPoint.Street,
+                Number = selectedRentalPoint.Number
+            };
+
+            return View(editViewModel);
+        }
+
         public ActionResult CreateSubmit(string name, string city, string street, string number)
         {
             rentalPointRepo.Create(name, city, street, number);
+
+            return RedirectToAction("Index");
+        }
+
+        public ActionResult EditSubmit(Guid id, string Name, string City, string Street, string Number)
+        {
+            rentalPointRepo.Edit(id, Name, City, Street, Number);
 
             return RedirectToAction("Index");
         }
