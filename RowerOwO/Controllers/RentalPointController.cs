@@ -16,11 +16,11 @@ namespace RowerOwO.Controllers
 
         public IActionResult Index()
         {
-            List<RentalPointListViewModel> rentalPointList = new();
+            List<RentalPointCRUDViewModel> rentalPointList = new();
 
             foreach (var item in rentalPointRepo.GetAll())
             {
-                rentalPointList.Add(new RentalPointListViewModel()
+                rentalPointList.Add(new RentalPointCRUDViewModel()
                 {
                     Id = item.Id,
                     Name = item.Name,
@@ -42,7 +42,7 @@ namespace RowerOwO.Controllers
         {
             var selectedRentalPoint = rentalPointRepo.Get(id);
 
-            var editViewModel = new RentalPointEditViewModel()
+            var editViewModel = new RentalPointCRUDViewModel()
             {
                 Id = selectedRentalPoint.Id,
                 Name = selectedRentalPoint.Name,

@@ -1,6 +1,6 @@
 ﻿namespace RowerOwO.ViewModels
 {
-    public class RentalPointEditViewModel
+    public class RentalPointCRUDViewModel
     {
         public Guid Id { get; set; }
         public string? Name { get; set; }
