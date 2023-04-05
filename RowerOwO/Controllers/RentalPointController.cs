@@ -67,5 +67,12 @@ namespace RowerOwO.Controllers
 
             return RedirectToAction("Index");
         }
+
+        public ActionResult Delete(Guid id)
+        {
+            rentalPointRepo.Delete(id);
+
+            return RedirectToAction("Index");
+        }
     }
 }

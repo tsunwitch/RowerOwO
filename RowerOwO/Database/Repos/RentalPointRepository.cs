@@ -46,5 +46,13 @@ namespace RowerOwO.Database.Repos
 
             ctx.SaveChanges();
         }
+
+        public void Delete(Guid id)
+        {
+            var rentalPointToDelete = ctx.RentalPoints.FirstOrDefault(r => r.Id == id);
+
+            ctx.RentalPoints.Remove(rentalPointToDelete);
+            ctx.SaveChanges();
+        }
     }
 }
