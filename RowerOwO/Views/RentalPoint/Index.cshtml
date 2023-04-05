@@ -5,13 +5,18 @@
 }
 
 <style>
+
+    *{
+        box-sizing:border-box;
+    }
+
     .rental-box{
-        margin:10px 0px 10px 0px;
+        margin:10px 10px 10px 10px;
         padding:15px;
         border-radius:10px;
         background: #fafafa;
         box-shadow: 10px 10px 0px #f2f1f0;
-        width:calc(100%/3);
+        width:calc(100%/3 - 20px);
     }
 </style>
 
@@ -20,10 +25,10 @@
 <p>
     <a asp-action="Create">Create New</a>
 </p>
-
-@foreach (var item in Model)
+<div style="display:flex;flex-wrap:wrap;width:100%">
+    @foreach (var item in Model)
 {
-    <div style="display:flex;flex-wrap:wrap;width:100%">
+    
         <div class="rental-box">
             <h3>@item.Name</h3>
             <p style="color:#FFACAC; font-size:1.4rem;">@item.City</p><br>
@@ -32,5 +37,5 @@
             <a asp-action="Edit" asp-route-id="@item.Id" class="button-round-inverted"><i class="bi bi-pencil"></i></a>
             <a asp-action="Delete" asp-route-id="@item.Id" class="button-round-inverted"><i class="bi bi-trash"></i></a>
         </div>
-    </div>
 }
+</div>
