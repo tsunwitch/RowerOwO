@@ -15,6 +15,9 @@ namespace RowerOwO
             // Add services to the container.
             builder.Services.AddControllersWithViews();
 
+            // Add automapper service
+            builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
+
             var app = builder.Build();
 
             using (var serviceScope = app.Services.CreateScope())

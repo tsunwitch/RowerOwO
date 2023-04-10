@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using AutoMapper;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using RowerOwO.Database;
 using RowerOwO.Database.Repos;
@@ -8,13 +9,15 @@ using System.Security.Cryptography.X509Certificates;
 
 namespace RowerOwO.Controllers
 {
-    public class BikeController : Controller
+    public class VehicleController : Controller
     {
         public VehicleRepository vehicleRepo;
+        private readonly IMapper _mapper;
 
-        public BikeController(DatabaseContext context)
+        public VehicleController(DatabaseContext context, IMapper mapper)
         {
             vehicleRepo = new(context);
+            _mapper = mapper;
         }
 
         // GET: BikeController
@@ -24,15 +27,16 @@ namespace RowerOwO.Controllers
 
             foreach (var item in vehicleRepo.GetAll())
             {
-                vehicleList.Add(new VehicleListViewModel()
-                {
-                    Id = item.Id,
-                    Name = item.Name,
-                    IsAvailable = item.IsAvailable,
-                    ImgPath = item.ImgPath,
-                    Description = item.Description,
-                    Type = item.Type
-                });
+                vehicleList.Add(_mapper.Map<VehicleListViewModel>(item));
+                //new VehicleListViewModel()
+                //{
+                //    Id = item.Id,
+                //    Name = item.Name,
+                //    IsAvailable = item.IsAvailable,
+                //    ImgPath = item.ImgPath,
+                //    Description = item.Description,
+                //    Type = item.Type
+                //}
             }
 
             return View(vehicleList);
@@ -42,17 +46,19 @@ namespace RowerOwO.Controllers
         {
             var selectedVehicle = vehicleRepo.Get(id);
 
-            VehicleDetailsViewModel detailViewModel = new VehicleDetailsViewModel()
-            {
-                Id = selectedVehicle.Id,
-                Name = selectedVehicle.Name,
-                ImgPath = selectedVehicle.ImgPath,
-                Description = selectedVehicle.Description,
-                Powered = selectedVehicle.Powered,
-                Color = selectedVehicle.Color,
-                RentPrice = selectedVehicle.RentPrice,
-                Type = selectedVehicle.Type
-            };
+            //VehicleDetailsViewModel detailViewModel = new VehicleDetailsViewModel()
+            //{
+            //    Id = selectedVehicle.Id,
+            //    Name = selectedVehicle.Name,
+            //    ImgPath = selectedVehicle.ImgPath,
+            //    Description = selectedVehicle.Description,
+            //    Powered = selectedVehicle.Powered,
+            //    Color = selectedVehicle.Color,
+            //    RentPrice = selectedVehicle.RentPrice,
+            //    Type = selectedVehicle.Type
+            //};
+
+            var detailViewModel = _mapper.Map<VehicleDetailsViewModel>(selectedVehicle);
 
             return View(detailViewModel);
         }
@@ -66,17 +72,19 @@ namespace RowerOwO.Controllers
         {
             var selectedVehicle = vehicleRepo.Get(id);
 
-            VehicleEditViewModel editViewModel = new VehicleEditViewModel()
-            {
-                Id = selectedVehicle.Id,
-                Name = selectedVehicle.Name,
-                ImgPath = selectedVehicle.ImgPath,
-                Description = selectedVehicle.Description,
-                Powered = selectedVehicle.Powered,
-                Color = selectedVehicle.Color,
-                RentPrice = selectedVehicle.RentPrice,
-                Type = selectedVehicle.Type
-            };
+            //VehicleEditViewModel editViewModel = new VehicleEditViewModel()
+            //{
+            //    Id = selectedVehicle.Id,
+            //    Name = selectedVehicle.Name,
+            //    ImgPath = selectedVehicle.ImgPath,
+            //    Description = selectedVehicle.Description,
+            //    Powered = selectedVehicle.Powered,
+            //    Color = selectedVehicle.Color,
+            //    RentPrice = selectedVehicle.RentPrice,
+            //    Type = selectedVehicle.Type
+            //};
+
+            var editViewModel = _mapper.Map<VehicleEditViewModel>(selectedVehicle);
 
             return View(editViewModel);
         }
