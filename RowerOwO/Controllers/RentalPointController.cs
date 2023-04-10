@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using AutoMapper;
+using Microsoft.AspNetCore.Mvc;
 using RowerOwO.Database;
 using RowerOwO.Database.Repos;
 using RowerOwO.ViewModels;
@@ -8,10 +9,12 @@ namespace RowerOwO.Controllers
     public class RentalPointController : Controller
     {
         public RentalPointRepository rentalPointRepo;
+        private readonly IMapper _mapper;
 
-        public RentalPointController(DatabaseContext context)
+        public RentalPointController(DatabaseContext context, IMapper mapper)
         {
             rentalPointRepo = new(context);
+            _mapper = mapper;
         }
 
         public IActionResult Index()
@@ -20,14 +23,15 @@ namespace RowerOwO.Controllers
 
             foreach (var item in rentalPointRepo.GetAll())
             {
-                rentalPointList.Add(new RentalPointCRUDViewModel()
-                {
-                    Id = item.Id,
-                    Name = item.Name,
-                    City = item.City,
-                    Street = item.Street,
-                    Number = item.Number
-                });
+                rentalPointList.Add(_mapper.Map<RentalPointCRUDViewModel>(item));
+                //rentalPointList.Add(new RentalPointCRUDViewModel()
+                //{
+                //    Id = item.Id,
+                //    Name = item.Name,
+                //    City = item.City,
+                //    Street = item.Street,
+                //    Number = item.Number
+                //});
             }
 
             return View(rentalPointList);
@@ -42,14 +46,16 @@ namespace RowerOwO.Controllers
         {
             var selectedRentalPoint = rentalPointRepo.Get(id);
 
-            var editViewModel = new RentalPointCRUDViewModel()
-            {
-                Id = selectedRentalPoint.Id,
-                Name = selectedRentalPoint.Name,
-                City = selectedRentalPoint.City,
-                Street = selectedRentalPoint.Street,
-                Number = selectedRentalPoint.Number
-            };
+            //var editViewModel = new RentalPointCRUDViewModel()
+            //{
+            //    Id = selectedRentalPoint.Id,
+            //    Name = selectedRentalPoint.Name,
+            //    City = selectedRentalPoint.City,
+            //    Street = selectedRentalPoint.Street,
+            //    Number = selectedRentalPoint.Number
+            //};
+
+            var editViewModel = _mapper.Map<RentalPointCRUDViewModel>(selectedRentalPoint);
 
             return View(editViewModel);
         }
