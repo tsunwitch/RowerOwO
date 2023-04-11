@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using FluentValidation;
+using System.ComponentModel.DataAnnotations;
 
 namespace RowerOwO.Models
 {
@@ -11,4 +12,16 @@ namespace RowerOwO.Models
         public DateOnly? RentTill { get; set; }
 
     }
+
+    public class RentalModelValidator : AbstractValidator<RentalModel>
+    {
+        public RentalModelValidator() 
+        {
+            RuleFor(x => x.RentFrom).LessThan(x => x.RentTill).
+                WithMessage("Data wypożyczenia musi być mniejsza od daty końca rezerwacji");
+            RuleFor(x => x.RentTill).GreaterThan(x => x.RentFrom).
+                WithMessage("Data końca rezerwacji musy być większa od daty wypożyczenia");
+        }
+    }
+
 }
