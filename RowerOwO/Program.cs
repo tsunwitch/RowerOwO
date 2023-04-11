@@ -1,4 +1,6 @@
-﻿using RowerOwO.Database;
+﻿using FluentValidation;
+using FluentValidation.AspNetCore;
+using RowerOwO.Database;
 using RowerOwO.Models;
 
 namespace RowerOwO
@@ -17,6 +19,9 @@ namespace RowerOwO
 
             // Add automapper service
             builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
+
+            //Add fluentvalidation service
+            builder.Services.AddFluentValidationAutoValidation().AddFluentValidationClientsideAdapters();
 
             var app = builder.Build();
 
