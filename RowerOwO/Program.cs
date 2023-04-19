@@ -1,12 +1,9 @@
-using FluentValidation;
+﻿using FluentValidation;
 using FluentValidation.AspNetCore;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using RowerOwO.Database;
 using RowerOwO.Models;
-using Microsoft.EntityFrameworkCore;
-using RowerOwO.Data;
-using RowerOwO.Areas.Identity.Data;
 
 namespace RowerOwO
 {
@@ -15,19 +12,12 @@ namespace RowerOwO
         public static void Main(string[] args)
         {
             var builder = WebApplication.CreateBuilder(args);
-                        var connectionString = builder.Configuration.GetConnectionString("RowerOwOContextConnection") ?? throw new InvalidOperationException("Connection string 'RowerOwOContextConnection' not found.");
 
             //Database
             builder.Services.AddDbContext<DatabaseContext>();
 
-                //        builder.Services.AddDefaultIdentity<RowerOwOUser>(options => options.SignIn.RequireConfirmedAccount = true)
-                //.AddEntityFrameworkStores<RowerOwOContext>();
-
             // Add services to the container.
             builder.Services.AddControllersWithViews();
-
-            // Add Razor Pages
-            builder.Services.AddRazorPages();
 
             // Add automapper service
             builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
@@ -159,15 +149,12 @@ namespace RowerOwO
             app.UseStaticFiles();
 
             app.UseRouting();
-                        app.UseAuthentication();;
 
             app.UseAuthorization();
 
             app.MapControllerRoute(
                 name: "default",
                 pattern: "{controller=Home}/{action=Index}/{id?}");
-
-            app.MapRazorPages();
 
             app.Run();
         }
