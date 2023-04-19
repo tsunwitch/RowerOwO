@@ -1,3 +1,12 @@
+:root {
+    --bs-primary: #FFACAC;
+}
+
+.btn-primary{
+    background-color: var(--bs-primary);
+    border-color: var(--bs-primary);
+}
+
 html {
     font-size: 14px;
     margin: 0;
