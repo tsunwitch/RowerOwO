@@ -1,9 +1,11 @@
-﻿using FluentValidation;
+using FluentValidation;
 using FluentValidation.AspNetCore;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using RowerOwO.Database;
 using RowerOwO.Models;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.DependencyInjection;
 
 namespace RowerOwO
 {
@@ -16,8 +18,18 @@ namespace RowerOwO
             //Database
             builder.Services.AddDbContext<DatabaseContext>();
 
+            //
+            builder.Services.ConfigureApplicationCookie(options =>
+            {
+                options.LoginPath = "/Login";
+                options.LoginPath = "/Denied";
+                options.LoginPath = "/Logout";
+            });
+
             // Add services to the container.
             builder.Services.AddControllersWithViews();
+
+            builder.Services.AddRazorPages();
 
             // Add automapper service
             builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
@@ -26,7 +38,7 @@ namespace RowerOwO
             builder.Services.AddFluentValidationAutoValidation().AddFluentValidationClientsideAdapters();
 
             //Add identity service
-            builder.Services.AddIdentityCore<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true).AddEntityFrameworkStores<DatabaseContext>();
+            builder.Services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = false).AddEntityFrameworkStores<DatabaseContext>();
 
             //Identity configuration
             builder.Services.Configure<IdentityOptions>(options =>
@@ -65,9 +77,9 @@ namespace RowerOwO
 
             using (var serviceScope = app.Services.CreateScope())
             {
-               var context = serviceScope.ServiceProvider.GetService<DatabaseContext>();
+                var context = serviceScope.ServiceProvider.GetService<DatabaseContext>();
 
-               if(context != null)
+                if (context != null)
                 {
                     var vehicles = new List<VehicleModel>
                     {
@@ -149,8 +161,11 @@ namespace RowerOwO
             app.UseStaticFiles();
 
             app.UseRouting();
+            app.UseAuthentication(); ;
 
             app.UseAuthorization();
+
+            app.MapRazorPages();
 
             app.MapControllerRoute(
                 name: "default",
