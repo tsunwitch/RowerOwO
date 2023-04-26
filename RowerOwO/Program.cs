@@ -171,7 +171,12 @@ namespace RowerOwO
                 name: "default",
                 pattern: "{controller=Home}/{action=Index}/{id?}");
 
-            app.Run();
+			app.MapAreaControllerRoute(
+	            name: "AdminController",
+                areaName:"Admin",
+	            pattern: "{area:exists}/{controller=Admin}/{action=Index}/{id?}");
+
+			app.Run();
         }
     }
 }
