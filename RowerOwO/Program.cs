@@ -174,7 +174,9 @@ namespace RowerOwO
 			app.MapAreaControllerRoute(
 	            name: "AdminController",
                 areaName:"Admin",
-	            pattern: "{area:exists}/{controller=Admin}/{action=Index}/{id?}");
+	            pattern: "Admin/{action=Index}/{id?}",
+                defaults: new { controller="Admin" }
+                );
 
 			app.Run();
         }
