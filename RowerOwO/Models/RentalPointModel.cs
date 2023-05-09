@@ -1,4 +1,6 @@
-﻿namespace RowerOwO.Models
+﻿using MessagePack;
+
+namespace RowerOwO.Models
 {
     public class RentalPointModel
     {

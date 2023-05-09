@@ -38,7 +38,7 @@ namespace RowerOwO
             builder.Services.AddFluentValidationAutoValidation().AddFluentValidationClientsideAdapters();
 
             //Add identity service
-            builder.Services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = false).AddEntityFrameworkStores<DatabaseContext>();
+            builder.Services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = false).AddRoles<IdentityRole>().AddEntityFrameworkStores<DatabaseContext>();
 
             //Identity configuration
             builder.Services.Configure<IdentityOptions>(options =>
@@ -78,6 +78,20 @@ namespace RowerOwO
             using (var serviceScope = app.Services.CreateScope())
             {
                 var context = serviceScope.ServiceProvider.GetService<DatabaseContext>();
+                var roleMgr = serviceScope.ServiceProvider.GetService<RoleManager<IdentityRole>>();
+                var userMgr = serviceScope.ServiceProvider.GetService<UserManager<IdentityUser>>();
+
+                roleMgr.CreateAsync(new IdentityRole("Administrator"));
+
+
+                var user_admin = new IdentityUser
+                {
+                    UserName = "admin",
+                    Email = "dupa@dupa.dupa",
+                    Id = Guid.NewGuid().ToString()
+                };
+                userMgr.CreateAsync(user_admin, "admin").Wait();
+                userMgr.AddToRoleAsync(user_admin, "Administrator").Wait();
 
                 if (context != null)
                 {

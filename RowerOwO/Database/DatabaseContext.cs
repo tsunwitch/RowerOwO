@@ -16,5 +16,5 @@ namespace RowerOwO.Database
         {
             optionsBuilder.UseInMemoryDatabase(databaseName: "BikeDB");
         }
-    }
+	}
 }
