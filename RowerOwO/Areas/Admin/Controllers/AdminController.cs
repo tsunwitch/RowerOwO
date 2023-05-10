@@ -12,5 +12,10 @@ namespace RowerOwO.Areas.Admin.Controllers
 		{
 			return View();
 		}
+
+		public IActionResult Dupa()
+		{
+			return View();
+		}
 	}
 }
