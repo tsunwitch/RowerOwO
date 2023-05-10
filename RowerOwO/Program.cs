@@ -6,6 +6,7 @@ using RowerOwO.Database;
 using RowerOwO.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
+using System.Drawing.Text;
 
 namespace RowerOwO
 {
@@ -40,6 +41,26 @@ namespace RowerOwO
             //Add identity service
             builder.Services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = false).AddRoles<IdentityRole>().AddEntityFrameworkStores<DatabaseContext>();
 
+            //Add user on startup
+   //         async Task CreateUserOnStartup(IServiceProvider serviceProvider)
+   //         {
+			//	var roleMgr = serviceProvider.GetRequiredService<RoleManager<IdentityRole>>();
+			//	var userMgr = serviceProvider.GetRequiredService<UserManager<IdentityUser>>();
+
+			//	await roleMgr.CreateAsync(new IdentityRole("Administrator"));
+
+
+			//	var user_admin = new IdentityUser
+			//	{
+			//		UserName = "admin@rower.owo",
+			//		Email = "admin@rower.owo",
+			//		//Id = Guid.NewGuid().ToString()
+			//	};
+			//	await userMgr.CreateAsync(user_admin, "admin");
+			//	//await userMgr.AddToRoleAsync(user_admin, "Administrator");
+
+			//}
+            
             //Identity configuration
             builder.Services.Configure<IdentityOptions>(options =>
             {
@@ -78,19 +99,19 @@ namespace RowerOwO
             using (var serviceScope = app.Services.CreateScope())
             {
                 var context = serviceScope.ServiceProvider.GetService<DatabaseContext>();
-                var roleMgr = serviceScope.ServiceProvider.GetService<RoleManager<IdentityRole>>();
-                var userMgr = serviceScope.ServiceProvider.GetService<UserManager<IdentityUser>>();
+                var roleMgr = serviceScope.ServiceProvider.GetRequiredService<RoleManager<IdentityRole>>();
+                var userMgr = serviceScope.ServiceProvider.GetRequiredService<UserManager<IdentityUser>>();
 
                 roleMgr.CreateAsync(new IdentityRole("Administrator"));
 
 
                 var user_admin = new IdentityUser
                 {
-                    UserName = "admin",
-                    Email = "dupa@dupa.dupa",
-                    Id = Guid.NewGuid().ToString()
+                    UserName = "admin@rower.owo",
+                    Email = "admin@rower.owo",
+                    //Id = Guid.NewGuid().ToString()
                 };
-                userMgr.CreateAsync(user_admin, "admin").Wait();
+                userMgr.CreateAsync(user_admin, "Admin!123").Wait();
                 userMgr.AddToRoleAsync(user_admin, "Administrator").Wait();
 
                 if (context != null)
