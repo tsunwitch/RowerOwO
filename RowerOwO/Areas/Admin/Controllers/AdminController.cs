@@ -39,7 +39,7 @@ namespace RowerOwO.Areas.Admin.Controllers
 			return View(viewModelUserList);
 		}
 
-		public IActionResult Dupa()
+		public IActionResult Roles()
 		{
 			return View();
 		}
