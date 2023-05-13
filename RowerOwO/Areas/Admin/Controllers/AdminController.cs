@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.DependencyInjection;
 using RowerOwO.Areas.Admin.ViewModels;
 using System.Data;
+using System.Runtime.CompilerServices;
 
 namespace RowerOwO.Areas.Admin.Controllers
 {
@@ -12,16 +13,19 @@ namespace RowerOwO.Areas.Admin.Controllers
 	public class AdminController : Controller
 	{
 		private readonly UserManager<IdentityUser> usermgr;
+		private readonly RoleManager<IdentityRole> rolemgr;
 
-		public AdminController(UserManager<IdentityUser> usermgr)
+		public AdminController(UserManager<IdentityUser> usermgr, RoleManager<IdentityRole> rolemgr)
 		{
 			this.usermgr = usermgr;
+			this.rolemgr = rolemgr;
 		}
 
 		public async Task<IActionResult> Index()
 		{
 			var userList = usermgr.Users.ToList();
 			var viewModelUserList = new List<UserListViewModel>();
+			var availableRoles = rolemgr.Roles.Select(r => r.Name).ToList();
 
 			foreach(var user in userList)
 			{
@@ -32,11 +36,17 @@ namespace RowerOwO.Areas.Admin.Controllers
 					Id = user.Id.ToString(),
 					Name = user.UserName,
 					Email = user.Email,
-					Roles = roles.ToList()
+					Roles = roles.ToList(),
+					AvailableRoles = availableRoles
 				});
 			}
 
 			return View(viewModelUserList);
+		}
+
+		public void RoleChange()
+		{
+
 		}
 
 		public IActionResult Roles()

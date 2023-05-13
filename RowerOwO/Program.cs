@@ -103,7 +103,8 @@ namespace RowerOwO
                 var userMgr = serviceScope.ServiceProvider.GetRequiredService<UserManager<IdentityUser>>();
 
                 roleMgr.CreateAsync(new IdentityRole("Administrator"));
-
+                roleMgr.CreateAsync(new IdentityRole("Operator"));
+                roleMgr.CreateAsync(new IdentityRole("Uzytkownik"));
 
                 var user_admin = new IdentityUser
                 {
@@ -113,6 +114,7 @@ namespace RowerOwO
                 };
                 userMgr.CreateAsync(user_admin, "Admin!123").Wait();
                 userMgr.AddToRoleAsync(user_admin, "Administrator").Wait();
+                userMgr.AddToRoleAsync(user_admin, "Uzytkownik").Wait();
 
                 if (context != null)
                 {

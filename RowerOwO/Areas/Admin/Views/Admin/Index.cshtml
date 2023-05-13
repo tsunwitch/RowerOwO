@@ -274,14 +274,18 @@
                         <h4>@Html.DisplayFor(modelItem => item.Id)</h4>
                         Login: @Html.DisplayFor(modelItem => item.Name)<br><br>
                         E-mail: @Html.DisplayFor(modelItem => item.Email)<br>
-                        Role: 
-                            @foreach (var role in item.Roles)
+                        Role:<br />
+                            @foreach (var role in item.AvailableRoles)
                             {
-                                @role;
+                                if (item.Roles.Contains(role)){
+                                    @role <input type="checkbox" checked asp-action="RoleChange"><br />
+                                } else
+                                {
+                                    @role <input type="checkbox"><br />
+                                }
                             }
                             <br>
-                        <a asp-action="Edit" asp-route-id="@item.Id" class="button-round-inverted"><i class="bi bi-pencil"></i></a>
-                        <a asp-action="Delete" asp-route-id="@item.Id" class="button-round-inverted"><i class="bi bi-trash"></i></a>
+                        <a asp-action="SubmitDelete" asp-route-id="@item.Id" class="button-round-inverted"><i class="bi bi-trash"></i></a>
                     </div>
                 }
 
