@@ -274,7 +274,13 @@
                         <h4>@Html.DisplayFor(modelItem => item.Id)</h4>
                         Login: @Html.DisplayFor(modelItem => item.Name)<br><br>
                         E-mail: @Html.DisplayFor(modelItem => item.Email)<br>
-                        <a asp-action="Details" asp-route-id="@item.Id" class="button-round-inverted"><i class="bi bi-zoom-in"></i></a><br>
+                        Role: 
+                            @foreach (var role in item.Roles)
+                            {
+                                @role;
+                            }
+                            <br>
+                        <a asp-action="Details" asp-route-id="@item.Id" class="button-round-inverted"><i class="bi bi-zoom-in"></i></a>
                         <a asp-action="Edit" asp-route-id="@item.Id" class="button-round-inverted"><i class="bi bi-pencil"></i></a>
                         <a asp-action="Delete" asp-route-id="@item.Id" class="button-round-inverted"><i class="bi bi-trash"></i></a>
                     </div>

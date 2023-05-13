@@ -18,18 +18,21 @@ namespace RowerOwO.Areas.Admin.Controllers
 			this.usermgr = usermgr;
 		}
 
-		public IActionResult Index()
+		public async Task<IActionResult> Index()
 		{
 			var userList = usermgr.Users.ToList();
 			var viewModelUserList = new List<UserListViewModel>();
 
 			foreach(var user in userList)
 			{
-				viewModelUserList.Add(new UserListViewModel
+				var roles = await usermgr.GetRolesAsync(user);
+
+                viewModelUserList.Add(new UserListViewModel
 				{
 					Id = user.Id.ToString(),
 					Name = user.UserName,
-					Email = user.Email
+					Email = user.Email,
+					Roles = roles.ToList()
 				});
 			}
 
