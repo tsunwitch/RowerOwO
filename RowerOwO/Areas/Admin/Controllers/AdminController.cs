@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.DependencyInjection;
 using RowerOwO.Areas.Admin.ViewModels;
 using System.Data;
+using System.Diagnostics;
 using System.Runtime.CompilerServices;
 
 namespace RowerOwO.Areas.Admin.Controllers
@@ -44,9 +45,10 @@ namespace RowerOwO.Areas.Admin.Controllers
 			return View(viewModelUserList);
 		}
 
-		public void RoleChange()
+		[HttpPost]
+		public void RoleChange(Guid id,ChangeRolesViewModel hsiur)
 		{
-
+			Debug.WriteLine("dupa piepszyc");
 		}
 
 		public IActionResult Roles()

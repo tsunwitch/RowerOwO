@@ -274,18 +274,30 @@
                         <h4>@Html.DisplayFor(modelItem => item.Id)</h4>
                         Login: @Html.DisplayFor(modelItem => item.Name)<br><br>
                         E-mail: @Html.DisplayFor(modelItem => item.Email)<br>
-                        Role:<br />
-                            @foreach (var role in item.AvailableRoles)
-                            {
-                                if (item.Roles.Contains(role)){
-                                    @role <input type="checkbox" checked asp-action="RoleChange"><br />
-                                } else
-                                {
-                                    @role <input type="checkbox"><br />
-                                }
-                            }
-                            <br>
-                        <a asp-action="SubmitDelete" asp-route-id="@item.Id" class="button-round-inverted"><i class="bi bi-trash"></i></a>
+                        <form action="/Admin/RoleChange/@item.Id" method="post">
+                                Role:<br />
+                                <select name="roles" multiple>
+                                    @foreach (var role in item.AvailableRoles)
+                                    {
+                                        if (item.Roles.Contains(role))
+                                        {
+                                            <option selected value="@role">@role</option>
+
+                                            <br />
+                                        }
+                                        else
+                                        {
+                                            @role
+                                            <option value="@role">@role</option>
+
+                                            <br />
+                                        }
+                                    }
+                                </select>
+                                <br> 
+                                <input type="submit" class="button-round-inverted" value="Ustaw role">
+                        </form>
+                            <a asp-area="Admin" asp-action="SubmitDelete" asp-route-id="@item.Id" class="button-round-inverted"><i class="bi bi-trash"></i></a>
                     </div>
                 }
 
