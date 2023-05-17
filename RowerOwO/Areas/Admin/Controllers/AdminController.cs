@@ -72,7 +72,7 @@ namespace RowerOwO.Areas.Admin.Controllers
 			return RedirectToAction("Index");
 		}
 
-		[HttpPost]
+		[HttpGet]
 		public async Task<IActionResult> DeleteUser(Guid id)
 		{
 			var userToDelete = await usermgr.FindByIdAsync(id.ToString());
