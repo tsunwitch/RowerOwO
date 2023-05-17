@@ -46,9 +46,40 @@ namespace RowerOwO.Areas.Admin.Controllers
 		}
 
 		[HttpPost]
-		public void RoleChange(Guid id,ChangeRolesViewModel hsiur)
+		public async Task<IActionResult> RoleChange(Guid id,ChangeRolesViewModel rolki)
 		{
-			Debug.WriteLine("dupa piepszyc");
+			var currentUser = await usermgr.FindByIdAsync(id.ToString());
+
+			var allRoles = rolemgr.Roles.Select(r => r.Name).ToList();
+            List<string> validRoles = new() { "Administrator", "Operator", "Użytkownik" };
+
+
+            //await usermgr.RemoveFromRolesAsync(currentUser, validRoles);
+
+			foreach(var item in allRoles)
+			{
+				await usermgr.RemoveFromRoleAsync(currentUser, item);
+			}
+
+			await usermgr.AddToRolesAsync(currentUser, rolki.roles);
+			//await usermgr.AddToRoleAsync(currentUser, "Operator");
+
+			foreach(var role in await usermgr.GetRolesAsync(currentUser))
+			{
+				Console.WriteLine(role);
+			}
+
+			return RedirectToAction("Index");
+		}
+
+		[HttpPost]
+		public async Task<IActionResult> DeleteUser(Guid id)
+		{
+			var userToDelete = await usermgr.FindByIdAsync(id.ToString());
+
+			await usermgr.DeleteAsync(userToDelete);
+
+			return RedirectToAction("Index");
 		}
 
 		public IActionResult Roles()
