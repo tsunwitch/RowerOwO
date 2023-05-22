@@ -1,4 +1,4 @@
-﻿@model IEnumerable<RowerOwO.Areas.Admin.ViewModels.UserListViewModel>
+﻿@model IEnumerable<RowerOwO.Areas.Admin.ViewModels.RoleListViewModel>
 
 <head>
 
@@ -268,6 +268,17 @@
                 <!-- Begin Page Content -->
                 <div class="container-fluid">
                     <h1>Zarządzanie rolami</h1>
+
+                    <table>
+                        @foreach (var role in Model)
+                        {
+                            <tr>
+                                <td>@role.Id</td>
+                                <td>@role.Name</td>
+                                <td><a href="/Admin/DeleteRole/@role.Id" class="button-round-inverted"><i class="bi bi-trash"></i></a></td>
+                            </tr>
+                        }
+                    </table>
 
                 </div>
                 <!-- End of Main Content -->

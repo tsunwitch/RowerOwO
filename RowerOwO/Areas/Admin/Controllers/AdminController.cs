@@ -84,7 +84,17 @@ namespace RowerOwO.Areas.Admin.Controllers
 
 		public IActionResult Roles()
 		{
-			return View();
+			List<RoleListViewModel> roleList = new List<RoleListViewModel>();
+			foreach(var role in rolemgr.Roles)
+			{
+				roleList.Add(new RoleListViewModel()
+				{
+					Id = role.Id,
+					Name = role.Name
+				});
+			}
+
+			return View(roleList);
 		}
 	}
 }
