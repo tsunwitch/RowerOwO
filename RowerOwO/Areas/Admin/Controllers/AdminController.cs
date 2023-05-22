@@ -82,7 +82,17 @@ namespace RowerOwO.Areas.Admin.Controllers
 			return RedirectToAction("Index");
 		}
 
-		public IActionResult Roles()
+        [HttpGet]
+        public async Task<IActionResult> DeleteRole(Guid id)
+        {
+            var roleToDelete = await rolemgr.FindByIdAsync(id.ToString());
+
+            await rolemgr.DeleteAsync(roleToDelete);
+
+            return RedirectToAction("Roles");
+        }
+
+        public IActionResult Roles()
 		{
 			List<RoleListViewModel> roleList = new List<RoleListViewModel>();
 			foreach(var role in rolemgr.Roles)
