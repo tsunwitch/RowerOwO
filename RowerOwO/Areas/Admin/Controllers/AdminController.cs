@@ -92,6 +92,14 @@ namespace RowerOwO.Areas.Admin.Controllers
             return RedirectToAction("Roles");
         }
 
+		[HttpPost]
+		public async Task<IActionResult> CreateRole(string newRoleName)
+		{
+            await rolemgr.CreateAsync(new IdentityRole(newRoleName));
+
+			return RedirectToAction("Roles");
+        }
+
         public IActionResult Roles()
 		{
 			List<RoleListViewModel> roleList = new List<RoleListViewModel>();

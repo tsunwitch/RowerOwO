@@ -279,9 +279,11 @@
                             </tr>
                         }
                         <tr>
-                            <td></td>
-                            <td><input /></td>
-                            <td><a class="button-round-inverted"><i class="bi bi-plus"></i></a></td>
+                            @using (Html.BeginForm("CreateRole", "Admin"))
+                            {
+                                <td><input name="newRoleName" /></td>
+                                <td><input type="submit" class="button-round-inverted" value="Dodaj rolę"></td>
+                            }                      
                         </tr>
                     </table>
 
