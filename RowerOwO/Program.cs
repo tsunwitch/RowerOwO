@@ -7,6 +7,7 @@ using RowerOwO.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 using System.Drawing.Text;
+using RowerOwO.Areas.Users.Models;
 
 namespace RowerOwO
 {
@@ -180,8 +181,20 @@ namespace RowerOwO
                         }
                     };
 
+                    var rentals = new List<RentalModel>()
+                    {
+                        new RentalModel()
+                        {
+                            Vehicle = vehicles.FirstOrDefault(v => v.Name == "Scooter Board Ultra"),
+                            Point = rentalPoints.FirstOrDefault(p => p.Name == "RowerOwO AGH"),
+                            RentFrom = new DateOnly(2023, 5, 24),
+                            RentTill = new DateOnly(2023, 5, 31)
+                        }
+                    };
+
                     context.Vehicles.AddRange(vehicles);
                     context.RentalPoints.AddRange(rentalPoints);
+                    context.Rentals.AddRange(rentals);
                     context.SaveChanges();
                 }
             }
@@ -213,6 +226,13 @@ namespace RowerOwO
                 areaName:"Admin",
 	            pattern: "Admin/{action=Index}/{id?}",
                 defaults: new { controller="Admin" }
+                );
+
+            app.MapAreaControllerRoute(
+                name: "UsersController",
+                areaName: "Users",
+                pattern: "Users/{action=Index}/{id?}",
+                defaults: new { controller = "Users" }
                 );
 
             app.Run();

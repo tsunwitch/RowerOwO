@@ -1,11 +1,12 @@
 ﻿using FluentValidation;
+using RowerOwO.Models;
 using System.ComponentModel.DataAnnotations;
 
-namespace RowerOwO.Models
+namespace RowerOwO.Areas.Users.Models
 {
     public class RentalModel
     {
-        public Guid Id{ get; set; }
+        public Guid Id { get; set; }
         public virtual VehicleModel? Vehicle { get; set; }
         public virtual RentalPointModel? Point { get; set; }
         public DateOnly? RentFrom { get; set; }
@@ -15,7 +16,7 @@ namespace RowerOwO.Models
 
     public class RentalModelValidator : AbstractValidator<RentalModel>
     {
-        public RentalModelValidator() 
+        public RentalModelValidator()
         {
             RuleFor(x => x.RentFrom).LessThan(x => x.RentTill).
                 WithMessage("Data wypożyczenia musi być mniejsza od daty końca rezerwacji");

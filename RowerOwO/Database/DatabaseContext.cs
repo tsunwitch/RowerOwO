@@ -1,8 +1,10 @@
 ﻿using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
+using RowerOwO.Areas.Users.Models;
 using RowerOwO.Models;
 using RowerOwO.ViewModels;
+using RowerOwO.Areas.Users.ViewModels;
 
 namespace RowerOwO.Database
 {
@@ -16,5 +18,7 @@ namespace RowerOwO.Database
         {
             optionsBuilder.UseInMemoryDatabase(databaseName: "BikeDB");
         }
+
+        public DbSet<RowerOwO.Areas.Users.ViewModels.RentalListViewModel>? RentalListViewModel { get; set; }
 	}
 }

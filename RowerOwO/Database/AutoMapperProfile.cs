@@ -1,4 +1,6 @@
 ﻿using AutoMapper;
+using RowerOwO.Areas.Users.Models;
+using RowerOwO.Areas.Users.ViewModels;
 using RowerOwO.Models;
 using RowerOwO.ViewModels;
 
@@ -22,6 +24,9 @@ namespace RowerOwO.Database
 
             CreateMap<RentalPointCRUDViewModel, RentalPointModel>();
             CreateMap<RentalPointModel,RentalPointCRUDViewModel>();
+
+            CreateMap<RentalListViewModel, RentalModel>();
+            CreateMap<RentalModel, RentalListViewModel>();
         }
     }
 }
