@@ -1,4 +1,4 @@
-﻿@model IEnumerable<RowerOwO.Areas.Users.ViewModels.RentalListViewModel>
+﻿@model IEnumerable<RowerOwO.Areas.Admin.ViewModels.RentalListViewModel>
 
 @{
     ViewData["Title"] = "Rentals";
@@ -13,10 +13,13 @@
     <thead>
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.RentFrom)
+                Pojazd
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.RentTill)
+                Od
+            </th>
+            <th>
+                Do
             </th>
             <th></th>
         </tr>
@@ -24,6 +27,9 @@
     <tbody>
 @foreach (var item in Model) {
         <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Vehicle)
+            </td>
             <td>
                 @Html.DisplayFor(modelItem => item.RentFrom)
             </td>

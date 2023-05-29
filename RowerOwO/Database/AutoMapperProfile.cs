@@ -1,6 +1,6 @@
 ﻿using AutoMapper;
+using RowerOwO.Areas.Admin.ViewModels;
 using RowerOwO.Areas.Users.Models;
-using RowerOwO.Areas.Users.ViewModels;
 using RowerOwO.Models;
 using RowerOwO.ViewModels;
 

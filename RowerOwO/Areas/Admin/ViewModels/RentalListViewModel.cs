@@ -1,9 +1,9 @@
 ﻿using RowerOwO.Models;
 
-namespace RowerOwO.Areas.Users.ViewModels
+namespace RowerOwO.Areas.Admin.ViewModels
 {
     public class RentalListViewModel
-    { 
+    {
         public Guid Id { get; set; }
         public virtual VehicleModel? Vehicle { get; set; }
         public DateOnly? RentFrom { get; set; }

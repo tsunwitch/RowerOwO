@@ -9,11 +9,10 @@ using RowerOwO.Database;
 using System.Data;
 using System.Diagnostics;
 using System.Runtime.CompilerServices;
-using RowerOwO.Areas.Users.ViewModels;
 
 namespace RowerOwO.Areas.Admin.Controllers
 {
-	[Area("Admin")]
+    [Area("Admin")]
 	[Authorize(Roles = "Administrator")]
 	public class AdminController : Controller
 	{

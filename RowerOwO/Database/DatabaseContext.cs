@@ -4,7 +4,7 @@ using Microsoft.EntityFrameworkCore;
 using RowerOwO.Areas.Users.Models;
 using RowerOwO.Models;
 using RowerOwO.ViewModels;
-using RowerOwO.Areas.Users.ViewModels;
+using RowerOwO.Areas.Admin.ViewModels;
 
 namespace RowerOwO.Database
 {
@@ -19,6 +19,6 @@ namespace RowerOwO.Database
             optionsBuilder.UseInMemoryDatabase(databaseName: "BikeDB");
         }
 
-        public DbSet<RowerOwO.Areas.Users.ViewModels.RentalListViewModel>? RentalListViewModel { get; set; }
+        public DbSet<RentalListViewModel>? RentalListViewModel { get; set; }
 	}
 }
