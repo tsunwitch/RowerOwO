@@ -4,14 +4,23 @@
     ViewData["Title"] = "Rentals";
 }
 
-<h1>Index</h1>
+<style>
+    .nomargin{
+        margin:0;
+    }
+</style>
+
+<h1>Aktywne wypożyczenia</h1>
 
 <p>
     <a asp-action="Create">Create New</a>
 </p>
-<table class="table">
+<table class="table" style="table-layout: fixed; width: 100%;">
     <thead>
         <tr>
+            <th>
+                ID
+            </th>
             <th>
                 Pojazd
             </th>
@@ -21,14 +30,22 @@
             <th>
                 Do
             </th>
-            <th></th>
+            <th>
+                Wypożyczalnia
+            </th>
+            <th>
+                Opcje
+            </th>
         </tr>
     </thead>
     <tbody>
 @foreach (var item in Model) {
         <tr>
             <td>
-                @Html.DisplayFor(modelItem => item.Vehicle.Name)
+                @item.Id
+            </td>
+            <td>
+                @item.Vehicle.Name
             </td>
             <td>
                 @item.RentFrom
@@ -37,9 +54,12 @@
                 @item.RentTill
             </td>
             <td>
-                <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+                @item.RentalPoint.Name
+            </td>
+            <td>
+                <a asp-action="Details" asp-route-id="@item.Id" class="button-round-inverted nomargin"><i class="bi bi-zoom-in"></i></a>
+                <a asp-action="Edit" asp-route-id="@item.Id" class="button-round-inverted nomargin"><i class="bi bi-pencil"></i></a>
+                <a asp-action="Delete" asp-route-id="@item.Id" class="button-round-inverted nomargin"><i class="bi bi-trash"></i></a>
             </td>
         </tr>
 }
