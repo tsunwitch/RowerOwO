@@ -19,6 +19,6 @@ namespace RowerOwO.Database
             optionsBuilder.UseInMemoryDatabase(databaseName: "BikeDB").UseLazyLoadingProxies();
         }
 
-        public DbSet<RentalListViewModel>? RentalListViewModel { get; set; }
+        public DbSet<RentalCRUDViewModel>? RentalListViewModel { get; set; }
 	}
 }

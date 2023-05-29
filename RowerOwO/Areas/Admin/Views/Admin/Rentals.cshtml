@@ -1,4 +1,4 @@
-﻿@model IEnumerable<RowerOwO.Areas.Admin.ViewModels.RentalListViewModel>
+﻿@model IEnumerable<RowerOwO.Areas.Admin.ViewModels.RentalCRUDViewModel>
 
 @{
     ViewData["Title"] = "Rentals";
@@ -57,9 +57,9 @@
                 @item.RentalPoint.Name
             </td>
             <td>
-                <a asp-action="Details" asp-route-id="@item.Id" class="button-round-inverted nomargin"><i class="bi bi-zoom-in"></i></a>
-                <a asp-action="Edit" asp-route-id="@item.Id" class="button-round-inverted nomargin"><i class="bi bi-pencil"></i></a>
-                <a asp-action="Delete" asp-route-id="@item.Id" class="button-round-inverted nomargin"><i class="bi bi-trash"></i></a>
+                @*href="/Admin/DeleteUser/@item.Id"*@
+                <a href="/Admin/EditRental/@item.Id" class="button-round-inverted nomargin"><i class="bi bi-pencil"></i></a>
+                <a href="/Admin/DeleteRental/@item.Id" class="button-round-inverted nomargin"><i class="bi bi-trash"></i></a>
             </td>
         </tr>
 }

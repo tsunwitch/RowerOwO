@@ -25,8 +25,8 @@ namespace RowerOwO.Database
             CreateMap<RentalPointCRUDViewModel, RentalPointModel>();
             CreateMap<RentalPointModel,RentalPointCRUDViewModel>();
 
-            CreateMap<RentalListViewModel, RentalModel>();
-            CreateMap<RentalModel, RentalListViewModel>();
+            CreateMap<RentalCRUDViewModel, RentalModel>();
+            CreateMap<RentalModel, RentalCRUDViewModel>();
         }
     }
 }

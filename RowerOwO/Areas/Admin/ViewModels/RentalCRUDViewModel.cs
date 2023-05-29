@@ -2,7 +2,7 @@
 
 namespace RowerOwO.Areas.Admin.ViewModels
 {
-    public class RentalListViewModel
+    public class RentalCRUDViewModel
     {
         public Guid Id { get; set; }
         public virtual VehicleModel? Vehicle { get; set; }

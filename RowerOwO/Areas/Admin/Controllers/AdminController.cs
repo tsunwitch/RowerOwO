@@ -54,11 +54,11 @@ namespace RowerOwO.Areas.Admin.Controllers
 
         public IActionResult Rentals()
         {
-            var rentaList = new List<RentalListViewModel>();
+            var rentaList = new List<RentalCRUDViewModel>();
 
             foreach (var item in rentalRepo.GetAll())
             {
-                rentaList.Add(_mapper.Map<RentalListViewModel>(item));
+                rentaList.Add(_mapper.Map<RentalCRUDViewModel>(item));
             }
 
             return View(rentaList);
@@ -111,7 +111,15 @@ namespace RowerOwO.Areas.Admin.Controllers
             return RedirectToAction("Roles");
         }
 
-		[HttpPost]
+		[HttpGet]
+        public IActionResult DeleteRental(Guid id)
+        {
+			rentalRepo.Delete(id);
+
+            return RedirectToAction("Rentals");
+        }
+
+        [HttpPost]
 		public async Task<IActionResult> CreateRole(string newRoleName)
 		{
             await rolemgr.CreateAsync(new IdentityRole(newRoleName));
