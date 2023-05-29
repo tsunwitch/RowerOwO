@@ -186,7 +186,7 @@ namespace RowerOwO
                         new RentalModel()
                         {
                             Vehicle = vehicles.FirstOrDefault(v => v.Name == "Scooter Board Ultra"),
-                            Point = rentalPoints.FirstOrDefault(p => p.Name == "RowerOwO AGH"),
+                            RentalPoint = rentalPoints.FirstOrDefault(p => p.Name == "RowerOwO AGH"),
                             RentFrom = new DateOnly(2023, 5, 24),
                             RentTill = new DateOnly(2023, 5, 31)
                         }

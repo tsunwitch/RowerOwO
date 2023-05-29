@@ -28,7 +28,7 @@
 @foreach (var item in Model) {
         <tr>
             <td>
-                @Html.DisplayFor(modelItem => item.Vehicle)
+                @Html.DisplayFor(modelItem => item.Vehicle.Name)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.RentFrom)

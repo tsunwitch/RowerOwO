@@ -28,7 +28,7 @@ namespace RowerOwO.Database.Repos
             ctx.Rentals.Add(new RentalModel
             {
                 Vehicle = vehicle,
-                Point = rentalPoint,
+                RentalPoint = rentalPoint,
                 RentFrom = dateFrom,
                 RentTill = dateTill
             });
@@ -41,7 +41,7 @@ namespace RowerOwO.Database.Repos
             var rentalToEdit = ctx.Rentals.FirstOrDefault(r => r.Id == id);
 
             rentalToEdit.Vehicle = vehicle;
-            rentalToEdit.Point = rentalPoint;
+            rentalToEdit.RentalPoint = rentalPoint;
             rentalToEdit.RentFrom = dateFrom;
             rentalToEdit.RentTill = dateTill;
 

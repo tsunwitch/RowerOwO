@@ -16,7 +16,7 @@ namespace RowerOwO.Database
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseInMemoryDatabase(databaseName: "BikeDB");
+            optionsBuilder.UseInMemoryDatabase(databaseName: "BikeDB").UseLazyLoadingProxies();
         }
 
         public DbSet<RentalListViewModel>? RentalListViewModel { get; set; }
