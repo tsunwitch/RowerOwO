@@ -1,11 +1,15 @@
-﻿using Microsoft.AspNetCore.Authorization;
+﻿using AutoMapper;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.DependencyInjection;
 using RowerOwO.Areas.Admin.ViewModels;
+using RowerOwO.Database.Repos;
+using RowerOwO.Database;
 using System.Data;
 using System.Diagnostics;
 using System.Runtime.CompilerServices;
+using RowerOwO.Areas.Users.ViewModels;
 
 namespace RowerOwO.Areas.Admin.Controllers
 {
@@ -15,12 +19,16 @@ namespace RowerOwO.Areas.Admin.Controllers
 	{
 		private readonly UserManager<IdentityUser> usermgr;
 		private readonly RoleManager<IdentityRole> rolemgr;
+        public RentalRepository rentalRepo { get; set; }
+        private readonly IMapper _mapper;
 
-		public AdminController(UserManager<IdentityUser> usermgr, RoleManager<IdentityRole> rolemgr)
+        public AdminController(UserManager<IdentityUser> usermgr, RoleManager<IdentityRole> rolemgr, DatabaseContext context, IMapper mapper)
 		{
 			this.usermgr = usermgr;
 			this.rolemgr = rolemgr;
-		}
+            rentalRepo = new(context);
+            _mapper = mapper;
+        }
 
 		public async Task<IActionResult> Index()
 		{
@@ -45,7 +53,19 @@ namespace RowerOwO.Areas.Admin.Controllers
 			return View(viewModelUserList);
 		}
 
-		[HttpPost]
+        public IActionResult Rentals()
+        {
+            var rentaList = new List<RentalListViewModel>();
+
+            foreach (var item in rentalRepo.GetAll())
+            {
+                rentaList.Add(_mapper.Map<RentalListViewModel>(item));
+            }
+
+            return View(rentaList);
+        }
+
+        [HttpPost]
 		public async Task<IActionResult> RoleChange(Guid id,ChangeRolesViewModel rolki)
 		{
 			var currentUser = await usermgr.FindByIdAsync(id.ToString());
