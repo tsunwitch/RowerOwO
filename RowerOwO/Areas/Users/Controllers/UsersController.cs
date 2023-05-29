@@ -26,15 +26,6 @@ namespace RowerOwO.Areas.Users.Controllers
             foreach (var item in rentalRepo.GetAll())
             {
                 rentaList.Add(_mapper.Map<RentalListViewModel>(item));
-                //new VehicleListViewModel()
-                //{
-                //    Id = item.Id,
-                //    Name = item.Name,
-                //    IsAvailable = item.IsAvailable,
-                //    ImgPath = item.ImgPath,
-                //    Description = item.Description,
-                //    Type = item.Type
-                //}
             }
 
             return View(rentaList);
