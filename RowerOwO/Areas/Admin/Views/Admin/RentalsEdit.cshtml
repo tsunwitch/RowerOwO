@@ -9,9 +9,6 @@
 
 <h4>@Model.Id</h4>
 <hr />
-
-@using (Html.BeginForm("EditRentalSubmit", "Admin"))
-{
 <div class="row">
     <div class="col-md-4">
         <form asp-action="RentalsEdit">
@@ -19,22 +16,22 @@
             <input type="hidden" asp-for="Id" />
             <div class="form-group">
                 <label class="control-label">Vehicle</label>
-                <select name="vehicleName" class="form-control" value="@Model.Vehicle.Name">
+                <input asp-for="Vehicle" class="form-control" />
                 <span asp-validation-for="Vehicle" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label class="control-label">RentalPoint</label>
-                <input asp-for="rentalPointName" class="form-control" value="@Model.RentalPoint.Name" />
+                <input asp-for="RentalPoint" class="form-control" />
                 <span asp-validation-for="RentalPoint" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label class="control-label">Od</label>
-                <input name="rentFrom" class="form-control" />
+                <input asp-for="RentFrom" class="form-control" />
                 <span asp-validation-for="RentFrom" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label class="control-label">Do</label>
-                <input name="rentTill" class="form-control" />
+                <input asp-for="RentTill" class="form-control" />
                 <span asp-validation-for="RentTill" class="text-danger"></span>
             </div>
             <div class="form-group">
@@ -43,7 +40,6 @@
         </form>
     </div>
 </div>
-}
 
 <div>
     <a href="/Admin" class="button-round-inverted">Back to list</a>

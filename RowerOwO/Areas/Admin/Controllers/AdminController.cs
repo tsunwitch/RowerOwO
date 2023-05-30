@@ -120,12 +120,6 @@ namespace RowerOwO.Areas.Admin.Controllers
             return RedirectToAction("Roles");
         }
 
-		[HttpPost]
-		public IActionResult EditRentalSubmit(Guid id, string vehicleName, string rentalPointName, DateOnly rentFrom, DateOnly rentTill)
-		{
-			return RedirectToAction("Rentals");
-		}
-
 		[HttpGet]
         public IActionResult DeleteRental(Guid id)
         {
