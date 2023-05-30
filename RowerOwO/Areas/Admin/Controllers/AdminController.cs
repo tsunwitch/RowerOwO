@@ -52,15 +52,6 @@ namespace RowerOwO.Areas.Admin.Controllers
 			return View(viewModelUserList);
 		}
 
-		[HttpGet]
-		public IActionResult RentalsEdit(Guid id)
-		{
-			var selectedRental = rentalRepo.Get(id);
-			var rentalToEdit = _mapper.Map<RentalCRUDViewModel>(selectedRental);
-
-            return View(rentalToEdit);
-		}
-
         public IActionResult Rentals()
         {
             var rentaList = new List<RentalCRUDViewModel>();
