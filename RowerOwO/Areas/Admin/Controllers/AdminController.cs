@@ -19,12 +19,14 @@ namespace RowerOwO.Areas.Admin.Controllers
 		private readonly UserManager<IdentityUser> usermgr;
 		private readonly RoleManager<IdentityRole> rolemgr;
         public RentalRepository rentalRepo { get; set; }
+		public VehicleRepository vehicleRepo { get; set; }
         private readonly IMapper _mapper;
 
         public AdminController(UserManager<IdentityUser> usermgr, RoleManager<IdentityRole> rolemgr, DatabaseContext context, IMapper mapper)
 		{
 			this.usermgr = usermgr;
 			this.rolemgr = rolemgr;
+			vehicleRepo = new(context);
             rentalRepo = new(context);
             _mapper = mapper;
         }
@@ -110,6 +112,18 @@ namespace RowerOwO.Areas.Admin.Controllers
 
             return RedirectToAction("Roles");
         }
+
+		[HttpGet]
+		public IActionResult ReturnRental(Guid id)
+		{
+			var rentalToChange = rentalRepo.Get(id);
+			var vehicleId = rentalToChange.Vehicle.Id;
+
+			rentalRepo.ChangeAvailability(id);
+			vehicleRepo.ChangeAvailability(vehicleId);
+
+			return RedirectToAction("Rentals");
+		}
 
 		[HttpGet]
         public IActionResult DeleteRental(Guid id)

@@ -35,6 +35,12 @@ namespace RowerOwO.Database.Repos
             }
         }
 
+        public void ChangeAvailability(Guid id)
+        {
+            var vehicleToChange = ctx.Vehicles.FirstOrDefault(r => r.Id == id);
+            vehicleToChange.IsAvailable = !vehicleToChange.IsAvailable;
+        }
+
         public void Create(string name, string imgPath, string description, bool powered, string color, double rentPrice, string type)
         {
             ctx.Vehicles.Add(new VehicleModel

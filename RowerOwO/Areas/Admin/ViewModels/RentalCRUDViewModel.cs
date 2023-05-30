@@ -9,5 +9,6 @@ namespace RowerOwO.Areas.Admin.ViewModels
         public virtual RentalPointModel? RentalPoint { get; set; }
         public DateOnly? RentFrom { get; set; }
         public DateOnly? RentTill { get; set; }
+        public bool IsActive { get; set; }
     }
 }

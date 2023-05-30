@@ -10,11 +10,12 @@
     }
 </style>
 
-<h1>Aktywne wypożyczenia</h1>
+<h1>Lista wypożyczeń</h1>
 
 <p>
     <a asp-action="Create">Create New</a>
 </p>
+<h2>Aktywne wypożyczenia</h2>
 <table class="table" style="table-layout: fixed; width: 100%;">
     <thead>
         <tr>
@@ -39,29 +40,88 @@
         </tr>
     </thead>
     <tbody>
-@foreach (var item in Model) {
+        @foreach (var item in Model) {
+            @if(item.IsActive == true)
+            {
+                <tr>
+                    <td>
+                        @item.Id
+                    </td>
+                    <td>
+                        @item.Vehicle.Name
+                    </td>
+                    <td>
+                        @item.RentFrom
+                    </td>
+                    <td>
+                        @item.RentTill
+                    </td>
+                    <td>
+                        @item.RentalPoint.Name
+                    </td>
+                    <td>
+                        @*href="/Admin/DeleteUser/@item.Id"*@
+                        <a href="/Admin/ReturnRental/@item.Id" class="button-round-inverted nomargin"><i class="bi bi-arrow-return-left"></i></a>
+                        <a href="/Admin/DeleteRental/@item.Id" class="button-round-inverted nomargin"><i class="bi bi-trash"></i></a>
+                    </td>
+                </tr>
+            }
+        }
+    </tbody>
+</table>
+
+<h2>Zwrócone wypożyczenia</h2>
+<table class="table" style="table-layout: fixed; width: 100%;">
+    <thead>
         <tr>
-            <td>
-                @item.Id
-            </td>
-            <td>
-                @item.Vehicle.Name
-            </td>
-            <td>
-                @item.RentFrom
-            </td>
-            <td>
-                @item.RentTill
-            </td>
-            <td>
-                @item.RentalPoint.Name
-            </td>
-            <td>
-                @*href="/Admin/DeleteUser/@item.Id"*@
-                <a href="/Admin/EditRental/@item.Id" class="button-round-inverted nomargin"><i class="bi bi-pencil"></i></a>
-                <a href="/Admin/DeleteRental/@item.Id" class="button-round-inverted nomargin"><i class="bi bi-trash"></i></a>
-            </td>
+            <th>
+                ID
+            </th>
+            <th>
+                Pojazd
+            </th>
+            <th>
+                Od
+            </th>
+            <th>
+                Do
+            </th>
+            <th>
+                Wypożyczalnia
+            </th>
+            <th>
+                Opcje
+            </th>
         </tr>
-}
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            @if (item.IsActive == false)
+            {
+                <tr>
+                    <td>
+                        @item.Id
+                    </td>
+                    <td>
+                        @item.Vehicle.Name
+                    </td>
+                    <td>
+                        @item.RentFrom
+                    </td>
+                    <td>
+                        @item.RentTill
+                    </td>
+                    <td>
+                        @item.RentalPoint.Name
+                    </td>
+                    <td>
+                        @*href="/Admin/DeleteUser/@item.Id"*@
+                        <a href="/Admin/ReturnRental/@item.Id" class="button-round-inverted nomargin"><i class="bi bi-arrow-return-left"></i></a>
+                        <a href="/Admin/DeleteRental/@item.Id" class="button-round-inverted nomargin"><i class="bi bi-trash"></i></a>
+                    </td>
+                </tr>
+            }
+        }
     </tbody>
 </table>

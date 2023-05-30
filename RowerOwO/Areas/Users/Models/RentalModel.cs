@@ -13,7 +13,7 @@ namespace RowerOwO.Areas.Users.Models
         public virtual RentalPointModel RentalPoint { get; set; }
         public DateOnly? RentFrom { get; set; }
         public DateOnly? RentTill { get; set; }
-
+        public bool IsActive { get; set; }
     }
 
     public class RentalModelValidator : AbstractValidator<RentalModel>

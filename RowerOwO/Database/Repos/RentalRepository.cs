@@ -23,6 +23,14 @@ namespace RowerOwO.Database.Repos
             return ctx.Rentals.FirstOrDefault(r => r.Id == id);
         }
 
+        public void ChangeAvailability (Guid id)
+        {
+            var rentalToChange = ctx.Rentals.FirstOrDefault(r => r.Id == id);
+            rentalToChange.IsActive = !rentalToChange.IsActive;
+
+            ctx.SaveChanges();
+        }
+
         public void Create(VehicleModel vehicle, RentalPointModel rentalPoint, DateOnly dateFrom, DateOnly dateTill)
         {
             ctx.Rentals.Add(new RentalModel

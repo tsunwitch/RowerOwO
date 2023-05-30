@@ -188,7 +188,8 @@ namespace RowerOwO
                             Vehicle = vehicles.FirstOrDefault(v => v.Name == "Scooter Board Ultra"),
                             RentalPoint = rentalPoints.FirstOrDefault(p => p.Name == "RowerOwO AGH"),
                             RentFrom = new DateOnly(2023, 5, 24),
-                            RentTill = new DateOnly(2023, 5, 31)
+                            RentTill = new DateOnly(2023, 5, 31),
+                            IsActive = true
                         }
                     };
 
