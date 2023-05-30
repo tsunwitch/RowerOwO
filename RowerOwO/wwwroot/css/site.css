@@ -64,6 +64,15 @@ html {
     text-decoration:none;
 }
 
+.button-disabled {
+    background: #f0f0f0;
+    animation:none;
+}
+
+.button-disabled:hover {
+    animation:none;
+}
+
 .button-round:hover, .button-round-inverted:hover {
     animation-name:buttonSlideIn;
     animation-duration:0.4s;

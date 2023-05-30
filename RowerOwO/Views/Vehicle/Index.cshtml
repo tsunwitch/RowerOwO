@@ -27,6 +27,13 @@
                 <a asp-action="Details" asp-route-id="@item.Id" class="button-round-inverted"><i class="bi bi-zoom-in"></i></a>
                 <a asp-action="Edit" asp-route-id="@item.Id" class="button-round-inverted"><i class="bi bi-pencil"></i></a>
                 <a asp-action="Delete" asp-route-id="@item.Id" class="button-round-inverted"><i class="bi bi-trash"></i></a>
+                @if(item.IsAvailable == true)
+                {
+                    <a asp-action="Rent" asp-route-id="@item.Id" class="button-round-inverted">Wypożycz teraz!</a>
+                } else
+                {
+                    <a class="button-round-inverted button-disabled" disabled>Wypożycz teraz!</a>
+                }
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.Id)
