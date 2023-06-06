@@ -1,4 +1,4 @@
-﻿@model RowerOwO.Areas.Admin.ViewModels.RentalCRUDViewModel
+﻿@model RowerOwO.Areas.Admin.ViewModels.RentalCreateViewModel
 
 @{
     ViewData["Title"] = "Index";
@@ -7,7 +7,7 @@
 
 <h1>Index</h1>
 
-<h4>RentalCRUDViewModel</h4>
+<h4>RentalCreateViewModel</h4>
 <hr />
 <div class="row">
     <div class="col-md-4">
@@ -22,11 +22,6 @@
                 <label asp-for="RentTill" class="control-label"></label>
                 <input asp-for="RentTill" class="form-control" />
                 <span asp-validation-for="RentTill" class="text-danger"></span>
-            </div>
-            <div class="form-group form-check">
-                <label class="form-check-label">
-                    <input class="form-check-input" asp-for="IsActive" /> @Html.DisplayNameFor(model => model.IsActive)
-                </label>
             </div>
             <div class="form-group">
                 <input type="submit" value="Create" class="btn btn-primary" />

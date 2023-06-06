@@ -20,5 +20,7 @@ namespace RowerOwO.Database
         }
 
         public DbSet<RentalCRUDViewModel>? RentalListViewModel { get; set; }
+
+        public DbSet<RowerOwO.Areas.Admin.ViewModels.RentalCreateViewModel>? RentalCreateViewModel { get; set; }
 	}
 }
