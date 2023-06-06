@@ -39,6 +39,8 @@ namespace RowerOwO.Database.Repos
         {
             var vehicleToChange = ctx.Vehicles.FirstOrDefault(r => r.Id == id);
             vehicleToChange.IsAvailable = !vehicleToChange.IsAvailable;
+
+            ctx.SaveChanges();
         }
 
         public void Create(string name, string imgPath, string description, bool powered, string color, double rentPrice, string type)

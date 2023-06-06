@@ -14,5 +14,6 @@ namespace RowerOwO.Models
         public string? Color { get; set; }
         public double? RentPrice { get; set; }
         public string Type { get; set; } = "Rower";
+        public virtual RentalPointModel RentalPoint { get; set; }
     }
 }

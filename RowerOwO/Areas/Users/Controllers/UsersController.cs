@@ -21,14 +21,14 @@ namespace RowerOwO.Areas.Users.Controllers
 
         public IActionResult Index()
         {
-            var rentaList = new List<RentalCRUDViewModel>();
+            //var rentaList = new List<RentalCRUDViewModel>();
 
-            foreach (var item in rentalRepo.GetAll())
-            {
-                rentaList.Add(_mapper.Map<RentalCRUDViewModel>(item));
-            }
+            //foreach (var item in rentalRepo.GetAll())
+            //{
+            //    rentaList.Add(_mapper.Map<RentalCRUDViewModel>(item));
+            //}
 
-            return View(rentaList);
+            return View();
         }
     }
 }

@@ -72,7 +72,7 @@ namespace RowerOwO.Areas.Admin.Controllers
 			var currentUser = await usermgr.FindByIdAsync(id.ToString());
 
 			var allRoles = rolemgr.Roles.Select(r => r.Name).ToList();
-            List<string> validRoles = new() { "Administrator", "Operator", "Użytkownik" };
+            //List<string> validRoles = new() { "Administrator", "Operator", "Użytkownik" };
 
 
             //await usermgr.RemoveFromRolesAsync(currentUser, validRoles);
