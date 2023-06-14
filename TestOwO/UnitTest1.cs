@@ -25,11 +25,12 @@ namespace TestOwO
         }
 
         [Test]
-        public void AddVehicleTest()
+        public void AddReservationTest()
         {
             LoginTest();
 
             IList<IWebElement> rows = new List<IWebElement>();
+            IList<IWebElement> rowsAfterCreate = new List<IWebElement>();
 
             driver.Navigate().GoToUrl(@"https://localhost:7082/Admin/Rentals");
             rows = driver.FindElements(By.XPath(@"//table[@class='table']//tbody/tr"));
@@ -40,6 +41,11 @@ namespace TestOwO
             driver.FindElement(By.Name("RentTill")).SendKeys("01012050");
 
             driver.FindElement(By.XPath("//input[@type='submit']")).Click();
+
+            driver.Navigate().GoToUrl(@"https://localhost:7082/Admin/Rentals");
+            rowsAfterCreate = driver.FindElements(By.XPath(@"//table[@class='table']//tbody/tr"));
+
+            Assert.Greater(rowsAfterCreate.Count, rows.Count);
         }
     }
 }
