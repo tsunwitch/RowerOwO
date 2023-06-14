@@ -7,7 +7,7 @@ namespace RowerOwO.Models
     {
         public Guid Id { get; set; }
         public string? Name { get; set; }
-        public bool? IsAvailable { get; set; }
+        public bool? IsAvailable { get; set; } = true;
         public string? ImgPath { get; set; }
         public string? Description { get; set; }
         public bool? Powered { get; set; }

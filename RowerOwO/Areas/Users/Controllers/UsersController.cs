@@ -48,6 +48,7 @@ namespace RowerOwO.Areas.Users.Controllers
 
             var rentalPointToRent = rentalPointRepo.Get(selectedRentalPoint);
             var vehicleToRent = vehicleRepo.Get(selectedVehicle);
+            vehicleRepo.ChangeAvailability(vehicleToRent.Id);
 
             rentalRepo.Create(vehicleToRent, rentalPointToRent, RentFrom, RentTill);
 
