@@ -10,22 +10,22 @@
 <hr />
 <div class="row">
     <div class="col-md-4">
-        <form asp-action="Index">
+        <form asp-action="CreateRental" asp-controller="Users" method="post">
             <div class="form-group">
                 <label>Punkt wypożyczeń</label><br />
-                <select id="rentalPointSelect" class="form-select">
+                <select asp-for="RentalPoint" id="rentalPointSelect" class="form-select">
                     @foreach (var item in Model.RentalPointList)
                     {
-                        <option>@item.Name</option>
+                        <option value="@item.Id">@item.Name</option>
                     }
                 </select>
             </div>
             <div class="form-group">
                 <label>Pojazd</label><br />
-                <select name="vehicleSelect" class="form-select">
+                <select asp-for="Vehicle" name="vehicleSelect" class="form-select">
                     @foreach(var item in Model.VehicleList)
                     {
-                        <option>@item.Name</option>
+                        <option value="@item.Id">@item.Name</option>
                     }
                 </select>
             </div>
@@ -50,13 +50,6 @@
 <div>
     <a asp-action="Index">Back to List</a>
 </div>
-
-<script>
-    function selectedRentalPoint(selected){
-
-        return selected;
-    }
-</script>
 
 @section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}

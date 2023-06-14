@@ -40,5 +40,15 @@ namespace RowerOwO.Areas.Users.Controllers
 
             return View(rentalCreateVM);
         }
+
+        public IActionResult CreateRental(Guid RentalPoint, Guid Vehicle, DateOnly dateFrom, DateOnly dateTill)
+        {
+            var vehicleToRent = vehicleRepo.Get(Vehicle);
+            var rentalPointToRent = rentalPointRepo.Get(RentalPoint);
+
+            rentalRepo.Create(vehicleToRent, rentalPointToRent, dateFrom, dateTill);
+
+            return RedirectToAction("Index");
+        }
     }
 }
