@@ -119,18 +119,5 @@ namespace RowerOwO.Controllers
 
             return RedirectToAction("Index");
         }
-
-        public ActionResult Rent(Guid id)
-        {
-            var vehicleToRent = vehicleRepo.Get(id);
-            var defaultRentalPoint = rentalPointRepo.GetAll().FirstOrDefault();
-            var dateFrom = new DateOnly(2023, 5, 2);
-            var dateTill = new DateOnly(2023, 5, 30);
-
-            rentalRepo.Create(vehicleToRent, defaultRentalPoint, dateFrom, dateTill);
-            vehicleRepo.ChangeAvailability(id);
-
-            return RedirectToAction("Index");
-        }
     }
 }

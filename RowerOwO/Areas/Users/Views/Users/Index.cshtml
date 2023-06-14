@@ -13,7 +13,13 @@
         <form asp-action="CreateRental" asp-controller="Users" method="post">
             <div class="form-group">
                 <label>Punkt wypożyczeń</label><br />
-                <select asp-for="RentalPoint" id="rentalPointSelect" class="form-select">
+                @*<asp:DropDownList id="rentalPointSelect" runat="server">
+                    @foreach(var item in Model.RentalPointList)
+                    {
+                        <asp:ListItem Text="@item.Name" Value="@item.Id"></asp:ListItem>
+                    }
+                </asp:DropDownList>*@
+                <select asp-for="RentalPoint" id="rentalPointSelect" name="rentalPointSelect" runat="server" class="form-select">
                     @foreach (var item in Model.RentalPointList)
                     {
                         <option value="@item.Id">@item.Name</option>
@@ -22,7 +28,7 @@
             </div>
             <div class="form-group">
                 <label>Pojazd</label><br />
-                <select asp-for="Vehicle" name="vehicleSelect" class="form-select">
+                <select asp-for="Vehicle" id="vehicleSelect" name="vehicleSelect" runat="server" class="form-select">
                     @foreach(var item in Model.VehicleList)
                     {
                         <option value="@item.Id">@item.Name</option>

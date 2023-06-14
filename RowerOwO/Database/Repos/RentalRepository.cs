@@ -31,20 +31,21 @@ namespace RowerOwO.Database.Repos
             ctx.SaveChanges();
         }
 
-        public void Create(VehicleModel vehicle, RentalPointModel rentalPoint, DateOnly dateFrom, DateOnly dateTill)
+        public void Create(VehicleModel vehicle, RentalPointModel rentalPoint, string dateFrom, string dateTill)
         {
             ctx.Rentals.Add(new RentalModel
             {
                 Vehicle = vehicle,
                 RentalPoint = rentalPoint,
                 RentFrom = dateFrom,
-                RentTill = dateTill
+                RentTill = dateTill,
+                IsActive = true
             });
 
             ctx.SaveChanges();
         }
 
-        public void Edit(Guid id, VehicleModel vehicle, RentalPointModel rentalPoint, DateOnly dateFrom, DateOnly dateTill)
+        public void Edit(Guid id, VehicleModel vehicle, RentalPointModel rentalPoint, string dateFrom, string dateTill)
         {
             var rentalToEdit = ctx.Rentals.FirstOrDefault(r => r.Id == id);
 

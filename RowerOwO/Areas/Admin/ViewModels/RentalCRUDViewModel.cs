@@ -7,8 +7,8 @@ namespace RowerOwO.Areas.Admin.ViewModels
         public Guid Id { get; set; }
         public virtual VehicleModel? Vehicle { get; set; }
         public virtual RentalPointModel? RentalPoint { get; set; }
-        public DateOnly? RentFrom { get; set; }
-        public DateOnly? RentTill { get; set; }
+        public string? RentFrom { get; set; }
+        public string? RentTill { get; set; }
         public bool IsActive { get; set; }
     }
 }
