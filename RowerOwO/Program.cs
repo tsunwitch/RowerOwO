@@ -152,17 +152,17 @@ namespace RowerOwO
 
                     new VehicleModel(){
                             //Id= Guid.NewGuid(),
-                            Name="Fwaggot 12",
+                            Name="Le Grand",
                             ImgPath="https://d2yn9m4p3q9iyv.cloudfront.net/schwinn/2022/traveler/thumbs/1000/22a27.webp",
                             Color="Silver",
-                            Description="Uniwersalny rower miejski bez niepotrzebnych gadżetów. Idealny dla każdego(oprócz dzieci bo troche duzy)",
+                            Description="Uniwersalny rower miejski bez niepotrzebnych gadżetów. Idealny dla każdego początkującego",
                             Powered=false,
                             RentPrice=25,
                             RentalPoint = rentalPoints.FirstOrDefault()
                         },
                         new VehicleModel(){
                             //Id= Guid.NewGuid(),
-                            Name="Szybcior Mega Ultra",
+                            Name="Strida",
                             ImgPath="https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcTU23ajdqnEIcik02UnJRY99iReEwEYRmiTcpWF-bST6Or2VAZm",
                             Color="Off-White",
                             Description="Mały składany rower. Dzięki rozmiarowi możesz zabrać go łatwo ze sobą do środków transportu publicznego. Posiada napęd elektryczny",
@@ -172,7 +172,7 @@ namespace RowerOwO
                         },
                         new VehicleModel(){
                             //Id= Guid.NewGuid(),
-                            Name="Scooter Board Ultra",
+                            Name="Husar",
                             ImgPath="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRqSxy2tgfPmJK2ANeSsaQR5gKvuCT6zAPE3G9ZfXKuJUtxqPwF",
                             Color="Pink",
                             Description="Stylowy rower z wykrzywioną ramą kierowany do kobiet. Wyróżnij się na tle miasta!",
@@ -182,21 +182,45 @@ namespace RowerOwO
                         }
                     };
 
-                    var rentals = new List<RentalModel>()
-                    {
-                        new RentalModel()
-                        {
-                            Vehicle = vehicles.FirstOrDefault(v => v.Name == "Scooter Board Ultra"),
-                            RentalPoint = rentalPoints.FirstOrDefault(p => p.Name == "RowerOwO AGH"),
-                            RentFrom = "2023-5-24",
-                            RentTill = "2023-5-31",
-                            IsActive = true
-                        }
-                    };
+                    //var rentals = new List<RentalModel>()
+                    //{
+                    //    new RentalModel()
+                    //    {
+                    //        Vehicle = vehicles.FirstOrDefault(v => v.Name == "Scooter Board Ultra"),
+                    //        RentalPoint = rentalPoints.FirstOrDefault(p => p.Name == "RowerOwO AGH"),
+                    //        RentFrom = "2023-5-24",
+                    //        RentTill = "2023-5-31",
+                    //        IsActive = true
+                    //    },
+                    //    new RentalModel()
+                    //    {
+                    //        Vehicle = vehicles.FirstOrDefault(v => v.Name == "Scooter Board Ultra"),
+                    //        RentalPoint = rentalPoints.FirstOrDefault(p => p.Name == "RowerOwO AGH"),
+                    //        RentFrom = "2023-6-24",
+                    //        RentTill = "2023-6-31",
+                    //        IsActive = true
+                    //    },
+                    //    new RentalModel()
+                    //    {
+                    //        Vehicle = vehicles.FirstOrDefault(v => v.Name == "Scooter Board Ultra"),
+                    //        RentalPoint = rentalPoints.FirstOrDefault(p => p.Name == "RowerOwO AGH"),
+                    //        RentFrom = "2023-6-3",
+                    //        RentTill = "2023-6-7",
+                    //        IsActive = true
+                    //    },
+                    //    new RentalModel()
+                    //    {
+                    //        Vehicle = vehicles.FirstOrDefault(v => v.Name == "Scooter Board Ultra"),
+                    //        RentalPoint = rentalPoints.FirstOrDefault(p => p.Name == "RowerOwO AGH"),
+                    //        RentFrom = "2023-7-20",
+                    //        RentTill = "2023-5-25",
+                    //        IsActive = false
+                    //    }
+                    //};
 
                     context.Vehicles.AddRange(vehicles);
                     context.RentalPoints.AddRange(rentalPoints);
-                    context.Rentals.AddRange(rentals);
+                    //context.Rentals.AddRange(rentals);
                     context.SaveChanges();
                 }
             }
