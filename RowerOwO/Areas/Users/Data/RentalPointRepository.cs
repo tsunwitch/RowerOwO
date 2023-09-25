@@ -1,7 +1,8 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using RowerOwO.Database;
 using RowerOwO.Models;
 
-namespace RowerOwO.Database.Repos
+namespace RowerOwO.Areas.Users.Data
 {
     public class RentalPointRepository
     {

@@ -7,6 +7,7 @@ using RowerOwO.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 using System.Drawing.Text;
+using RowerOwO.Areas.Users.Models;
 
 namespace RowerOwO
 {
@@ -118,40 +119,6 @@ namespace RowerOwO
 
                 if (context != null)
                 {
-                    var vehicles = new List<VehicleModel>
-                    {
-                        new VehicleModel(){
-                            //Id= Guid.NewGuid(),
-                            Name="Fwaggot 12",
-                            IsAvailable=true,
-                            ImgPath="https://d2yn9m4p3q9iyv.cloudfront.net/schwinn/2022/traveler/thumbs/1000/22a27.webp",
-                            Color="Silver",
-                            Description="Uniwersalny rower miejski bez niepotrzebnych gadżetów. Idealny dla każdego(oprócz dzieci bo troche duzy)",
-                            Powered=false,
-                            RentPrice=25,
-                        },
-                        new VehicleModel(){
-                            //Id= Guid.NewGuid(),
-                            Name="Szybcior Mega Ultra",
-                            IsAvailable=false,
-                            ImgPath="https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcTU23ajdqnEIcik02UnJRY99iReEwEYRmiTcpWF-bST6Or2VAZm",
-                            Color="Off-White",
-                            Description="Mały składany rower. Dzięki rozmiarowi możesz zabrać go łatwo ze sobą do środków transportu publicznego. Posiada napęd elektryczny",
-                            Powered=true,
-                            RentPrice=40.50
-                        },
-                        new VehicleModel(){
-                            //Id= Guid.NewGuid(),
-                            Name="Scooter Board Ultra",
-                            IsAvailable=false,
-                            ImgPath="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRqSxy2tgfPmJK2ANeSsaQR5gKvuCT6zAPE3G9ZfXKuJUtxqPwF",
-                            Color="Pink",
-                            Description="Stylowy rower z wykrzywioną ramą kierowany do kobiet. Wyróżnij się na tle miasta!",
-                            Powered=false,
-                            RentPrice=27.30
-                        }
-                    };
-
                     var rentalPoints = new List<RentalPointModel>()
                     {
                         new RentalPointModel(){
@@ -180,8 +147,56 @@ namespace RowerOwO
                         }
                     };
 
+                    var vehicles = new List<VehicleModel>
+                    {
+
+                    new VehicleModel(){
+                            //Id= Guid.NewGuid(),
+                            Name="Fwaggot 12",
+                            ImgPath="https://d2yn9m4p3q9iyv.cloudfront.net/schwinn/2022/traveler/thumbs/1000/22a27.webp",
+                            Color="Silver",
+                            Description="Uniwersalny rower miejski bez niepotrzebnych gadżetów. Idealny dla każdego(oprócz dzieci bo troche duzy)",
+                            Powered=false,
+                            RentPrice=25,
+                            RentalPoint = rentalPoints.FirstOrDefault()
+                        },
+                        new VehicleModel(){
+                            //Id= Guid.NewGuid(),
+                            Name="Szybcior Mega Ultra",
+                            ImgPath="https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcTU23ajdqnEIcik02UnJRY99iReEwEYRmiTcpWF-bST6Or2VAZm",
+                            Color="Off-White",
+                            Description="Mały składany rower. Dzięki rozmiarowi możesz zabrać go łatwo ze sobą do środków transportu publicznego. Posiada napęd elektryczny",
+                            Powered=true,
+                            RentPrice=40.50,
+                            RentalPoint = rentalPoints.FirstOrDefault()
+                        },
+                        new VehicleModel(){
+                            //Id= Guid.NewGuid(),
+                            Name="Scooter Board Ultra",
+                            ImgPath="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRqSxy2tgfPmJK2ANeSsaQR5gKvuCT6zAPE3G9ZfXKuJUtxqPwF",
+                            Color="Pink",
+                            Description="Stylowy rower z wykrzywioną ramą kierowany do kobiet. Wyróżnij się na tle miasta!",
+                            Powered=false,
+                            RentPrice=27.30,
+                            RentalPoint = rentalPoints.FirstOrDefault(r => r.Name == "RowerOwO z widokiem na morze")
+                        }
+                    };
+
+                    var rentals = new List<RentalModel>()
+                    {
+                        new RentalModel()
+                        {
+                            Vehicle = vehicles.FirstOrDefault(v => v.Name == "Scooter Board Ultra"),
+                            RentalPoint = rentalPoints.FirstOrDefault(p => p.Name == "RowerOwO AGH"),
+                            RentFrom = "2023-5-24",
+                            RentTill = "2023-5-31",
+                            IsActive = true
+                        }
+                    };
+
                     context.Vehicles.AddRange(vehicles);
                     context.RentalPoints.AddRange(rentalPoints);
+                    context.Rentals.AddRange(rentals);
                     context.SaveChanges();
                 }
             }
@@ -213,6 +228,13 @@ namespace RowerOwO
                 areaName:"Admin",
 	            pattern: "Admin/{action=Index}/{id?}",
                 defaults: new { controller="Admin" }
+                );
+
+            app.MapAreaControllerRoute(
+                name: "UsersController",
+                areaName: "Users",
+                pattern: "Users/{action=Index}/{id?}",
+                defaults: new { controller = "Users" }
                 );
 
             app.Run();

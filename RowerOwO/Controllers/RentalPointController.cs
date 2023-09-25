@@ -1,7 +1,7 @@
 ﻿using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
+using RowerOwO.Areas.Users.Data;
 using RowerOwO.Database;
-using RowerOwO.Database.Repos;
 using RowerOwO.ViewModels;
 
 namespace RowerOwO.Controllers

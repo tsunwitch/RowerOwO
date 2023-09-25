@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using RowerOwO.Areas.Users.Data;
 using RowerOwO.Database;
 using RowerOwO.Database.Repos;
 using RowerOwO.Models;
@@ -12,11 +13,15 @@ namespace RowerOwO.Controllers
     public class VehicleController : Controller
     {
         public VehicleRepository vehicleRepo;
+        public RentalRepository rentalRepo;
+        public RentalPointRepository rentalPointRepo;
         private readonly IMapper _mapper;
 
         public VehicleController(DatabaseContext context, IMapper mapper)
         {
             vehicleRepo = new(context);
+            rentalRepo = new(context);
+            rentalPointRepo = new(context);
             _mapper = mapper;
         }
 

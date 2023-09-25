@@ -21,12 +21,20 @@
                 <h3>@Html.DisplayFor(modelItem => item.Name)</h3>
                 <p style="color:#FFACAC; font-size:1.4rem;opacity:0.6">@item.Type</p><br>
                 @Html.DisplayFor(modelItem => item.Description)<br><br>
-                Status: @Html.DisplayFor(modelItem => item.IsAvailable)<br>
+                    @if(item.IsAvailable == true)
+                    {
+                        <p style="color:green">Dostępny!</p>
+                    } else
+                    {
+                        <p style="color:red">Niedostępny</p>
+                    }
+                <br>
                 @*@Html.ActionLink("Details", "Details", new { id=item.Id })*@
                 @*@<a href="@Url.Action("Details", new { id=item.Id })" class="button-round">Szczegóły</a>*@
                 <a asp-action="Details" asp-route-id="@item.Id" class="button-round-inverted"><i class="bi bi-zoom-in"></i></a>
                 <a asp-action="Edit" asp-route-id="@item.Id" class="button-round-inverted"><i class="bi bi-pencil"></i></a>
                 <a asp-action="Delete" asp-route-id="@item.Id" class="button-round-inverted"><i class="bi bi-trash"></i></a>
+                <a href="/Users" class="button-round-inverted m-2">Wypożycz teraz!</a>
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.Id)
